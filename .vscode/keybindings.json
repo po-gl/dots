@@ -1,0 +1,104 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    // See invisible characters
+    {
+        "key": "ctrl+shift+i",
+        "command": "editor.action.toggleRenderWhitespace"
+    },
+
+    // Move between groups like a sane vim person
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusPreviousGroup"
+    },
+
+    // Move to next/prev tab, quickly
+    {
+        "key": "ctrl+cmd+l",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+cmd+h",
+        "command": "workbench.action.previousEditor"
+    },
+
+    // Move current pane to a different group, so efficiently
+    {
+        "key": "ctrl+shift+l",
+        "command": "workbench.action.moveEditorToNextGroup"
+    },
+    {
+        "key": "ctrl+shift+h",
+        "command": "workbench.action.moveEditorToPreviousGroup"
+    },
+
+    // Move whole group, radically
+    {
+        "key": "ctrl+shift+cmd+l",
+        "command": "workbench.action.moveActiveEditorGroupRight"
+    },
+    {
+        "key": "ctrl+shift+cmd+h",
+        "command": "workbench.action.moveActiveEditorGroupLeft"
+    },
+
+    // Move focus in and out of the terminal
+    { 
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.focus"
+    },
+    { 
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "cmd+i",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "workbench.action.terminal.split",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+shift+h",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus",
+    },
+
+    // Folding/unfolding
+    {
+        "key": "space",
+        "command": "editor.fold",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "editor.unfold",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+
+    // Toggle minimap
+    {
+        "key": "ctrl+cmd+m",
+        "command": "editor.action.toggleMinimap",
+        "when": "editorTextFocus'",
+    },
+    // ------------------ Removed shortcuts -----------------------------
+
+]

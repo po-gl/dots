@@ -1,0 +1,13 @@
+pane	0	0	:bash	1	:*	0	:/Users/porter/Documents/Code/Scripts	0	vim	:vi rice.sh
+pane	0	0	:bash	1	:*	1	:/Users/porter/Documents/Code/Scripts	1	bash	:
+pane	0	0	:bash	1	:*	2	:/Users/porter/Documents/Code/Scripts	0	bash	:
+pane	2	0	:bash	1	:*	0	:/Users/porter	1	bash	:
+pane	euler	0	:bash	1	:*	0	:/Users/porter/Documents/Code/ProjectEuler	1	bash	:
+pane	euler	0	:bash	1	:*	1	:/Users/porter/Documents/Code/ProjectEuler	0	bash	:
+pane	euler	1	:bash	0	:#-	0	:/Users/porter/Documents/Code/ProjectEuler	1	bash	:
+pane	euler	1	:bash	0	:#-	1	:/Users/porter/Documents/Code/ProjectEuler	0	bash	:
+window	0	0	1	:*	a640,230x54,0,0{119x54,0,0,1,110x54,120,0[110x27,120,0,2,110x26,120,28,9]}
+window	2	0	1	:*	bd64,230x54,0,0,7
+window	euler	0	1	:*	7562,230x54,0,0{126x54,0,0,3,103x54,127,0,4}
+window	euler	1	0	:#-	ed5b,230x54,0,0{137x54,0,0,5,92x54,138,0,6}
+state	0	euler
