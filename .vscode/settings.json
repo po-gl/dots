@@ -1,0 +1,166 @@
+{
+    // Colors:
+
+    "editor.tokenColorCustomizations": {
+        "[DuoTone Dark Sea]": {
+            "textMateRules": [{
+                "scope": "punctuation", "settings": {
+                    "foreground": "#a3b4c4"
+                }
+            }]
+        }
+    },
+    "workbench.colorCustomizations":{
+        "[DuoTone Dark Sea]": {
+            "activityBar.background":"#1D262F",
+            "statusBar.background": "#273c53",
+            "statusBar.noFolderBackground": "#273c53",
+            "sideBar.background": "#1D262F",
+            "titleBar.activeBackground": "#1D262F",
+            "tab.activeBackground": "#232D38",
+            "tab.inactiveBackground": "#1D262F",
+            "editorGroupHeader.tabsBackground": "#1D262F",
+            "input.background": "#232D38",
+        },
+        "[Gruvbox Dark (Hard)]": {
+            "statusBar.background": "#3C6C58",
+            "statusBar.noFolderBackground": "#528464",
+            "statusBar.debuggingBackground": "#D49729",
+            "activityBar.background": "#1D2021",
+            "titleBar.activeBackground": "#1D2021",
+            "tab.activeBackground": "#304041",
+            "tab.inactiveBackground": "#1D2021",
+            "editorGroupHeader.tabsBackground": "#1D2021",
+        },
+        "[Braver's Solarized Light (themed workbench)]": {
+            "editorIndentGuide.activeBackground": "#BFB9A7"
+        },
+        "[Darktooth]": {
+            "statusBar.background": "#4D8080",
+            "statusBar.noFolderBackground": "#528464",
+            "statusBar.debuggingBackground": "#C66644",
+        }
+    },
+
+    // Tab and Spaces settings
+    "editor.tabSize": 2,
+
+    // Other Settings
+
+    // "window.nativeTabs": true,
+    // "vim.disableAnnoyingNeovimMessage": true,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Darktooth",
+    "files.autoSave": "onFocusChange",
+    "workbench.startupEditor": "newUntitledFile",
+    "materialTheme.cache.workbench.settings": {
+        "themeColours": "Darker",
+        "accentPrevious": "Acid Lime"
+    },
+    "java.errors.incompleteClasspath.severity": "ignore",
+
+
+    "code-runner.executorMap": {
+        "javascript": "node",
+        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "php": "php",
+        "python": "python3",
+        "perl": "perl",
+        "ruby": "ruby",
+        "go": "go run",
+        "lua": "lua",
+        "groovy": "groovy",
+        "powershell": "powershell -ExecutionPolicy ByPass -File",
+        "bat": "cmd /c",
+        "shellscript": "bash",
+        "fsharp": "fsi",
+        "csharp": "scriptcs",
+        "vbscript": "cscript //Nologo",
+        "typescript": "ts-node",
+        "coffeescript": "coffee",
+        "scala": "scala",
+        "swift": "swift",
+        "julia": "julia",
+        "crystal": "crystal",
+        "ocaml": "ocaml",
+        "r": "Rscript",
+        "applescript": "osascript",
+        "clojure": "lein exec",
+        "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+        "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+        "racket": "racket",
+        "ahk": "autohotkey",
+        "autoit": "autoit3",
+        "kotlin": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+        "dart": "dart",
+        "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+        "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+        "haskell": "runhaskell",
+        "nim": "nim compile --verbosity:0 --hints:off --run"
+    },
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=numpy,wx"
+    ],
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.editor.tabCloseButton": "left",
+    "workbench.sideBar.location": "right",
+    "javascript.implicitProjectConfig.checkJs": true,
+    "[javascriptreact]": {
+        
+    },
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "todohighlight.defaultStyle": {
+        "color": "#000000",
+        "backgroundColor": "#fff",
+    },
+    "todohighlight.isEnable": false,
+
+    "vim.disableExtension": false,
+    "editor.minimap.enabled": false,
+    "workbench.statusBar.feedback.visible": false,
+
+    "[python]": {
+        "editor.tabSize": 4,
+    },
+    "editor.renderWhitespace": "none",
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.gitExplorer.files.layout": "tree",
+    // "editor.fontFamily": "'Iosevka Term', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 12,
+    "gitlens.historyExplorer.enabled": true,
+    "workbench.iconTheme": "eq-material-theme-icons-darker",
+    "python.linting.enabled": false,
+    "pasteImage.path": "${currentFileDir}/.images",
+    "editor.tabCompletion": "on",
+    "python.pythonPath": "/usr/local/bin/python3",
+    "gitlens.views.repositories.files.layout": "tree",
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+    "python.jediEnabled": false,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "breadcrumbs.enabled": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "window.nativeTabs": true,
+}

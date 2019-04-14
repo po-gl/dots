@@ -1,0 +1,6 @@
+# Macos folder file
+.DS_Store
+
+# NO SSH CONFIG FILES for security ¯\_(ツ)_/¯
+.ssh/
+
