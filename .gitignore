@@ -1,6 +1,15 @@
+# gitignore for dot files
+#
+# Porter Glines 4/18/19
+
+
 # Macos folder file
 .DS_Store
 
 # NO SSH CONFIG FILES for security ¯\_(ツ)_/¯
 .ssh/
 
+# Don't include vscode extension
+# because it's easy to reinstall them
+# (if there's a special one, re-include it)
+.vscode/extensions/
