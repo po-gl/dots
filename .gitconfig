@@ -6,7 +6,7 @@
 [difftool]
 	prompt = false
 [alias]
-	d = difftool
+	dt = difftool
 	lg = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset'
 [merge]
 	tool = vimdiff
