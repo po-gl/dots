@@ -24,6 +24,10 @@ Plugin 'mattn/emmet-vim'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'tpope/vim-surround'
 
+" Languages
+Plugin 'rust-lang/rust.vim'
+
+filetype on
 " Plugin 'python-mode/python-mode'  " Currently broken due to python 3.7 issue
 
 " Plugin 'terryma/vim-multiple-cursors' " kinda breaks
