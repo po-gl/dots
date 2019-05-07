@@ -21,22 +21,26 @@ copy-chunkwmrc:
 	cp .chunkwmrc ~/
 
 copy-docker:
-	cp -R .docker ~/.docker
+	rm -rf ~/.docker/
+	cp -R .docker/ ~/.docker/
 
 copy-gitconfig:
 	cp .gitconfig ~/
 
 copy-tmux:
-	cp -R .tmux ~/.tmux
+	rm -rf ~/.tmux/
+	cp -R .tmux/ ~/.tmux/
 
 copy-vim:
-	cp -R .vim ~/.vim
+	rm -rf ~/.vim/
+	cp -R .vim/ ~/.vim/
 
 copy-vimrc:
 	cp .vimrc ~/
 
 copy-vscode:
-	cp -R .vscode ~/.vscode
+	rm -rf ~/.vscode/
+	cp -R .vscode/ ~/.vscode/
 
 
 # Gather rules
@@ -51,19 +55,23 @@ get-chunkwmrc:
 	cp ~/.chunkwmrc .
 
 get-docker:
-	cp -R ~/.docker .docker
+	rm -rf .docker/
+	cp -R ~/.docker/ .docker/
 
 get-gitconfig:
 	cp ~/.gitconfig .
 
 get-tmux:
-	cp -R ~/.tmux .tmux
+	rm -rf .tmux/
+	cp -R ~/.tmux/ .tmux/
 
 get-vim:
-	cp -R ~/.vim .vim
+	rm -rf .vim/
+	cp -R ~/.vim/ .vim/
 
 get-vimrc:
 	cp ~/.vimrc .
 
 get-vscode:
-	cp -R ~/.vscode .vscode
+	rm -rf .vscode/
+	cp -R ~/.vscode/ .vscode/
