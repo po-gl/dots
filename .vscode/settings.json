@@ -1,6 +1,5 @@
 {
     // Colors:
-
     "editor.tokenColorCustomizations": {
         "[DuoTone Dark Sea]": {
             "textMateRules": [{
@@ -42,6 +41,11 @@
         }
     },
 
+    // Silly glow effect
+    "vscode_custom_css.imports": [
+        "file:///Users/porter/.vscode/extensions/robbowen.synthwave-vscode-0.0.4/synthwave84.css"
+    ],
+
     // Tab and Spaces settings
     "editor.tabSize": 2,
 
@@ -50,7 +54,6 @@
     // "window.nativeTabs": true,
     // "vim.disableAnnoyingNeovimMessage": true,
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Darktooth",
     "files.autoSave": "onFocusChange",
     "workbench.startupEditor": "newUntitledFile",
     "materialTheme.cache.workbench.settings": {
@@ -163,4 +166,5 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "window.nativeTabs": true,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
 }
