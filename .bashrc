@@ -40,7 +40,7 @@ alias pgcopy="tr -d '\n' | pbcopy"
 # Color {{{
 export CLICOLOR=1
 # }}} 
-# Custom commands {{{
+# Custom functions {{{
 
 
 # PG Usage:
@@ -59,5 +59,21 @@ function decrypt() {
   openssl aes-256-cbc -d -in $1 -out $2
 }
 
+# }}}
+# Miscellaneous {{{
+
+# Add touchbar git repo status indicator for iTerm2
+# PS1='\h:W \u\$'  # default prompt
+PS1='\h:\W \u\$ \[$(~/.iterm2/it2setkeylabel set status "$(test -d .git && (git rev-parse --abbrev-ref HEAD) || (echo -n "Not a repo"))")\]'
+
+# bash-completion base
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# bash-completion for git
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
+    # if not found in /usr/local/etc, try the brew --prefix location
+    [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
+        . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+}
 # }}}
 # enable folding  vim:foldmethod=marker:foldlevel=0
