@@ -1,21 +1,24 @@
 default: copy
 
-install: install-brew-bundle copy-bash copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-vim copy-vimrc copy-vscode
+install: install-brew-bundle copy
 
-copy: copy-bash copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-vim copy-vimrc copy-vscode
+copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-vim copy-vimrc copy-vscode
 
-gather: get-brew-bundle get-bash get-chunkwmrc get-docker get-gitconfig get-tmux get-vim get-vimrc get-vscode
+gather: get-brew-bundle get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-vim get-vimrc get-vscode
 
 
 # Installation rules
 install-brew-bundle:
-	brew bundle --file Brewfile
+	brew bundle --file=Brewfile
 
 
 # Copy rules
 copy-bash:
 	cp .bash_profile ~/
 	cp .bashrc ~/
+
+copy-zsh:
+	cp .zshrc ~/
 
 copy-chunkwmrc:
 	cp .chunkwmrc ~/
@@ -50,6 +53,9 @@ get-brew-bundle:
 get-bash:
 	cp ~/.bash_profile .
 	cp ~/.bashrc .
+
+get-zsh:
+	cp ~/.zshrc .
 
 get-chunkwmrc:
 	cp ~/.chunkwmrc .
