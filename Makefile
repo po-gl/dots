@@ -1,6 +1,6 @@
 default: copy
 
-install: install-brew-bundle copy
+install: install-brew-bundle copy install-vundle
 
 copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-vim copy-vimrc copy-vscode
 
@@ -10,6 +10,11 @@ gather: get-brew-bundle get-bash get-zsh get-chunkwmrc get-docker get-gitconfig 
 # Installation rules
 install-brew-bundle:
 	brew bundle --file=Brewfile
+
+install-vundle:
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	# Run Vundle Plugin installer
+	vim +PluginInstall +qall
 
 
 # Copy rules
