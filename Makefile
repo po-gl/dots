@@ -1,4 +1,8 @@
-default: copy
+default: # Print usage info
+	@printf "\033[33minstall:        \033[0minstall packages, copy over configurations, and install plugins\n"
+	@printf "\033[33mcopy:           \033[0mcopy configuration to system\n"
+	@printf "\033[33mgather:         \033[0mcopy current configuration into this git directory\n"
+
 
 install: install-brew-bundle copy install-vundle
 
