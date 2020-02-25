@@ -1,0 +1,47 @@
+Affinity Designer.app
+Aseprite.app
+Blender.app
+CLion.app
+Discord.app
+Docker.app
+GarageBand.app
+Godot.app
+Google Chrome.app
+IINA.app
+Intel Power Gadget
+IntelliJ IDEA CE.app
+Kap.app
+Keynote.app
+Logi Options.app
+Magnet.app
+Mendeley Desktop.app
+Microsoft Excel.app
+Microsoft OneNote.app
+Microsoft PowerPoint.app
+Microsoft Word.app
+Minecraft.app
+Numbers.app
+Numi.app
+Pages.app
+Parallels Desktop.app
+PiPifier.app
+SF Symbols.app
+Safari.app
+Spotify.app
+Steam.app
+TablePlus.app
+Tagger.app
+The Unarchiver.app
+Tiled.app
+TimeMachineEditor.app
+ToggleScrollDirection.app
+Utilities
+Visual Studio Code.app
+Wipr.app
+Wireshark.app
+Xcode-beta.app
+Xcode.app
+balenaEtcher.app
+iTerm.app
+krita.app
+openglex6.app
