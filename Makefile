@@ -4,11 +4,11 @@ default: # Print usage info
 	@printf "\033[33mgather:         \033[0mcopy current configuration into this git directory\n"
 
 
-install: install-brew-bundle copy install-vundle
+install: install-brew-bundle copy install-vundle install-tmux-plugin-manager
 
-copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-vim copy-vimrc copy-vscode
+copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-vim copy-vscode
 
-gather: get-brew-bundle get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-vim get-vimrc get-vscode
+gather: get-brew-bundle get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-vim get-vscode
 
 
 # Installation rules
@@ -42,12 +42,11 @@ copy-gitconfig:
 copy-tmux:
 	rm -rf ~/.tmux/
 	cp -R .tmux/ ~/.tmux/
+	cp .tmux.conf ~/
 
 copy-vim:
 	rm -rf ~/.vim/
 	cp -R .vim/ ~/.vim/
-
-copy-vimrc:
 	cp .vimrc ~/
 
 copy-vscode:
@@ -79,12 +78,11 @@ get-gitconfig:
 get-tmux:
 	rm -rf .tmux/
 	cp -R ~/.tmux/ .tmux/
+	cp ~/.tmux.conf .
 
 get-vim:
 	rm -rf .vim/
 	cp -R ~/.vim/ .vim/
-
-get-vimrc:
 	cp ~/.vimrc .
 
 get-vscode:
