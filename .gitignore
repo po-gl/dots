@@ -11,9 +11,11 @@
 
 .vim/.netrwhist
 .vim/bundle/**
+.vim/colors/**
 
 # Don't include vscode extension
 # because it's easy to reinstall them
 # (if there's a special one, re-include it)
 .vscode/extensions/**
 
+.tmux/**
