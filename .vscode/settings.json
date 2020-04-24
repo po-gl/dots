@@ -124,7 +124,7 @@
     "todohighlight.isEnable": false,
 
     "vim.disableExtension": false,
-    "editor.minimap.enabled": false,
+    "editor.minimap.enabled": true,
     "workbench.statusBar.feedback.visible": false,
 
     "[python]": {
