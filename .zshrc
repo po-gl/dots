@@ -1,8 +1,10 @@
 # Path Variables {{{
 # Setting PATH for Python 3.6
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/porter/Library/Python/3.6/bin:${PATH}"
-export PATH
+export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/porter/Library/Python/3.6/bin:$PATH"
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$HOME/.gem/ruby/X.X.0/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
