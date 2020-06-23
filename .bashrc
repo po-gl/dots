@@ -2,12 +2,14 @@
 
 # Setting PATH for Python 3.6
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/porter/Library/Python/3.6/bin:${PATH}"
-export PATH
+export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/porter/Library/Python/3.6/bin:$PATH"
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="/usr/local/bin:$PATH"
+
 
 # PG Set music alarm environment variable
 export MUSIC_ALARM='/Users/porter/Music/Intervals/Libra.mp3'
@@ -70,10 +72,10 @@ PS1='\h:\W \u\$ \[$(~/.iterm2/it2setkeylabel set status "$(test -d .git && (git 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # bash-completion for git
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
-    # if not found in /usr/local/etc, try the brew --prefix location
-    [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
-        . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
-}
+ [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
+     # if not found in /usr/local/etc, try the brew --prefix location
+     [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
+         . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+ }
 # }}}
 # enable folding  vim:foldmethod=marker:foldlevel=0
