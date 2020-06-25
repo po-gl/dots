@@ -8,7 +8,7 @@ install: install-brew-bundle copy install-vundle install-tmux-plugin-manager
 
 copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-vim copy-vscode
 
-gather: get-brew-bundle get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-vim get-vscode
+gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-vim get-vscode
 
 
 # Installation rules
@@ -62,6 +62,9 @@ copy-vscode:
 # Gather rules
 get-brew-bundle:
 	brew bundle dump --force
+
+get-mac-apps:
+	ls /Applications/ > ./MacOS_apps_list.txt
 
 get-bash:
 	cp ~/.bash_profile .
