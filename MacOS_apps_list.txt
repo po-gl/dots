@@ -4,26 +4,32 @@ Blender.app
 CLion.app
 Discord.app
 Docker.app
+EtreCheck.app
 GarageBand.app
 Godot.app
 Google Chrome.app
+Grammarly for Safari.app
+Honey.app
 IINA.app
 Intel Power Gadget
 IntelliJ IDEA CE.app
 Kap.app
 Keynote.app
+Keys.app
 Logi Options.app
 Magnet.app
 Mendeley Desktop.app
 Microsoft Excel.app
 Microsoft OneNote.app
 Microsoft PowerPoint.app
+Microsoft Remote Desktop.app
 Microsoft Word.app
+MidiAndMusicXmlPlayer.app
 Minecraft.app
+Moonlight.app
 Numbers.app
 Numi.app
 Pages.app
-Parallels Desktop.app
 PiPifier.app
 SF Symbols.app
 Safari.app
@@ -31,6 +37,7 @@ Spotify.app
 Steam.app
 TablePlus.app
 Tagger.app
+TaskExplorer.app
 The Unarchiver.app
 Tiled.app
 TimeMachineEditor.app
@@ -39,9 +46,9 @@ Utilities
 Visual Studio Code.app
 Wipr.app
 Wireshark.app
-Xcode-beta.app
 Xcode.app
 balenaEtcher.app
 iTerm.app
 krita.app
 openglex6.app
+zoom.us.app
