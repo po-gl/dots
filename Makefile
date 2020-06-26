@@ -13,7 +13,7 @@ gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker g
 
 # Installation rules
 install-brew-bundle:
-	brew bundle --file=Brewfile
+	brew bundle --file=Brewfile -v
 
 install-vundle:
 	if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim; fi;
