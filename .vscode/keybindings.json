@@ -82,16 +82,16 @@
     },
 
     // Folding/unfolding
-    {
-        "key": "space",
-        "command": "editor.fold",
-        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
-    },
-    {
-        "key": "ctrl+space",
-        "command": "editor.unfold",
-        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
-    },
+    // {
+    //     "key": "space",
+    //     "command": "editor.fold",
+    //     "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    // },
+    // {
+    //     "key": "ctrl+space",
+    //     "command": "editor.unfold",
+    //     "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    // },
 
     // Toggle minimap
     {

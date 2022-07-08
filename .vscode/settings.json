@@ -10,8 +10,12 @@
         }
     },
     "workbench.colorCustomizations":{
+        "[Gruvbox Light Soft]": {
+            "titleBar.activeBackground": "#F2E5BC",
+            "titleBar.activeForeground": "#63584f"
+        },
         "[DuoTone Dark Sea]": {
-            "activityBar.background":"#1D262F",
+            "activityBar.background": "#1D262F",
             "statusBar.background": "#273c53",
             "statusBar.noFolderBackground": "#273c53",
             "sideBar.background": "#1D262F",
@@ -19,7 +23,7 @@
             "tab.activeBackground": "#232D38",
             "tab.inactiveBackground": "#1D262F",
             "editorGroupHeader.tabsBackground": "#1D262F",
-            "input.background": "#232D38",
+            "input.background": "#232D38"
         },
         "[Gruvbox Dark (Hard)]": {
             "statusBar.background": "#3C6C58",
@@ -29,7 +33,7 @@
             "titleBar.activeBackground": "#1D2021",
             "tab.activeBackground": "#304041",
             "tab.inactiveBackground": "#1D2021",
-            "editorGroupHeader.tabsBackground": "#1D2021",
+            "editorGroupHeader.tabsBackground": "#1D2021"
         },
         "[Braver's Solarized Light (themed workbench)]": {
             "editorIndentGuide.activeBackground": "#BFB9A7"
@@ -37,73 +41,19 @@
         "[Darktooth]": {
             "statusBar.background": "#4D8080",
             "statusBar.noFolderBackground": "#528464",
-            "statusBar.debuggingBackground": "#C66644",
-        }
+            "statusBar.debuggingBackground": "#C66644"
+        },
+        "statusBar.background": "#2b7275",
+        "statusBar.noFolderBackground": "#2b7275",
+        "statusBar.debuggingBackground": "#2b7275"
     },
 
-    // Silly glow effect
-    "vscode_custom_css.imports": [
-        "file:///Users/porter/.vscode/extensions/robbowen.synthwave-vscode-0.0.4/synthwave84.css"
-    ],
 
     // Tab and Spaces settings
     "editor.tabSize": 2,
-
-    // Other Settings
-
-    // "window.nativeTabs": true,
-    // "vim.disableAnnoyingNeovimMessage": true,
-    "window.zoomLevel": 0,
     "files.autoSave": "onFocusChange",
     "workbench.startupEditor": "newUntitledFile",
-    "materialTheme.cache.workbench.settings": {
-        "themeColours": "Darker",
-        "accentPrevious": "Acid Lime"
-    },
-    "java.errors.incompleteClasspath.severity": "ignore",
 
-
-    "code-runner.executorMap": {
-        "javascript": "node",
-        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
-        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-        "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-        "php": "php",
-        "python": "python3",
-        "perl": "perl",
-        "ruby": "ruby",
-        "go": "go run",
-        "lua": "lua",
-        "groovy": "groovy",
-        "powershell": "powershell -ExecutionPolicy ByPass -File",
-        "bat": "cmd /c",
-        "shellscript": "bash",
-        "fsharp": "fsi",
-        "csharp": "scriptcs",
-        "vbscript": "cscript //Nologo",
-        "typescript": "ts-node",
-        "coffeescript": "coffee",
-        "scala": "scala",
-        "swift": "swift",
-        "julia": "julia",
-        "crystal": "crystal",
-        "ocaml": "ocaml",
-        "r": "Rscript",
-        "applescript": "osascript",
-        "clojure": "lein exec",
-        "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
-        "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
-        "racket": "racket",
-        "ahk": "autohotkey",
-        "autoit": "autoit3",
-        "kotlin": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
-        "dart": "dart",
-        "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
-        "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
-        "haskell": "runhaskell",
-        "nim": "nim compile --verbosity:0 --hints:off --run"
-    },
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=numpy,wx"
     ],
@@ -125,7 +75,6 @@
 
     "vim.disableExtension": false,
     "editor.minimap.enabled": true,
-    "workbench.statusBar.feedback.visible": false,
 
     "[python]": {
         "editor.tabSize": 4,
@@ -143,19 +92,14 @@
         "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
     },
-    "gitlens.gitExplorer.files.layout": "tree",
+
     // "editor.fontFamily": "'Iosevka Term', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 12,
-    "gitlens.historyExplorer.enabled": true,
     "workbench.iconTheme": "eq-material-theme-icons-darker",
     "python.linting.enabled": false,
     "pasteImage.path": "${currentFileDir}/.images",
     "editor.tabCompletion": "on",
-    "python.pythonPath": "/usr/local/bin/python3",
     "gitlens.views.repositories.files.layout": "tree",
-    "gitlens.views.fileHistory.enabled": true,
-    "gitlens.views.lineHistory.enabled": true,
-    "python.jediEnabled": false,
     "files.exclude": {
         "**/.classpath": true,
         "**/.project": true,
@@ -164,7 +108,35 @@
     },
     "breadcrumbs.enabled": true,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "window.nativeTabs": true,
+    "window.nativeTabs": false,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.rulers": [
+    
+    ],
+
+    "vim.showMarksInGutter": true,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.insert": "#ab5781",
+    "vim.statusBarColors.normal": "#2b7275",
+    "vim.statusBarColors.visual": "#6a8a50",
+    "vim.statusBarColors.replace": "#c25960",
+
+    // "extensions.experimental.affinity": {
+    //     "vscodevim.vim": 1,
+    //     "asvetliakov.vscode-neovim": 1
+    // },
+    "vim.enableNeovim": true,
+
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "python.languageServer": "Default",
+    "notebook.output.textLineLimit": 1000,
     "workbench.colorTheme": "Gruvbox Dark Hard",
+    "editor.folding": true,
 }
