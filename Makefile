@@ -6,9 +6,9 @@ default: # Print usage info
 
 install: install-brew-bundle copy install-vundle install-tmux-plugin-manager
 
-copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-vim copy-vscode
+copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-nvim copy-vim copy-vscode
 
-gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-vim get-vscode
+gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-nvim get-vim get-vscode
 
 
 # Installation rules
@@ -19,6 +19,9 @@ install-vundle:
 	if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim; fi;
 	# Run Vundle Plugin installer
 	vim +PluginInstall +qall
+
+install-nvim-packer:
+	nvim +PackerCompile +PackerInstall +qall
 
 install-tmux-plugin-manager:
 	if [ ! -d ~/.tmux/plugins/tpm ] ; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi;
@@ -48,6 +51,12 @@ copy-tmux:
 	rm -rf ~/.tmux/
 	cp -R .tmux/ ~/.tmux/
 	cp .tmux.conf ~/
+
+copy-nvim:
+	rm -f ~/.config/nvim/init.vim
+	rm -rf ~/.config/nvim/lua/
+	rm -rf ~/.config/nvim/plugin/
+	cp -R .config/nvim/ ~/.config/nvim/
 
 copy-vim:
 	rm -rf ~/.vim/
@@ -87,6 +96,12 @@ get-tmux:
 	rm -rf .tmux/
 	cp -R ~/.tmux/ .tmux/
 	cp ~/.tmux.conf .
+
+get-nvim:
+	rm -rf .config/nvim/
+	cp -R ~/.config/nvim/ .config/nvim/
+	rm -rf .config/nvim/plugin/
+	rm -rf .config/nvim/undo/
 
 get-vim:
 	rm -rf .vim/
