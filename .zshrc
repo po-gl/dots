@@ -8,7 +8,10 @@ export PATH="$HOME/.gem/ruby/X.X.0/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+
+export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
 
 export EDITOR=vim
 
@@ -20,11 +23,24 @@ export PYTHON_INCLUDE_DIR="/usr/local/Frameworks/Python.framework/Versions/3.7/H
 # PG Set music alarm environment variable
 export MUSIC_ALARM='/Users/porter/Music/Intervals/Libra.mp3'
 
-# PG Set computer science environment variable
-# export CS_PATH='/Users/porter/Code/CS/'
+export PS4='+xtrace $LINENO:'
 
 # }}}
 # Aliases {{{
+
+alias vi='nvim'
+
+alias cl='clear'
+
+alias python='python3'
+alias pip='pip3'
+
+alias pgcopy="tr -d '\n' | pbcopy"
+
+alias ibrew="arch -x86_64 /usr/local/bin/brew"
+alias brew="/opt/homebrew/bin/brew"
+
+alias brew-update="brew update; brew upgrade; ibrew update; ibrew upgrade"
 
 # PG Show/Hide files in finder TODO: These should be functions
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
@@ -36,13 +52,6 @@ alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 # alias convertmp3tomp3='mkdir ./converted; for i in *.mp3; do ffmpeg -i "$i" -acodec libmp3lame -ab:a 320K  "converted/$i"; done; mv converted/* .; rmdir converted/'
 # alias convertmp3tomp3automator=' for i in /Users/porter/Music/Downloaded/Converting/*.mp3; do ffmpeg -i "$i" -acodec libmp3lame -ab:a 320K  "/Users/porter/Music/Downloaded/$i"; done'
 
-# PG shorter command to clear panel (I'm addicted to neatness)
-alias cl='clear'
-
-alias python='python3'
-alias pip='pip3'
-
-alias pgcopy="tr -d '\n' | pbcopy"
 
 # }}}
 # Custom functions {{{
