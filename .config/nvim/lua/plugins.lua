@@ -5,10 +5,16 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
+  use { 'wbthomason/packer.nvim' }
+  use { 'neovim/nvim-lspconfig' }
 
   -- Color scheme
-  use {"ellisonleao/gruvbox.nvim"}
-  require("gruvbox").setup({
+  use { 'luisiacc/gruvbox-baby' }
+  require('gruvbox-baby.colors').config()
+  vim.g.gruvbox_baby_keyword_style = "italic"
+
+  use { 'ellisonleao/gruvbox.nvim' }
+  require('gruvbox').setup({
     undercurl = true,
     underline = true,
     bold = true,
@@ -23,15 +29,179 @@ return require('packer').startup(function(use)
     overrides = {},
   })
   
+  -- File Exploring
   use { 'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons',
     },
   }
-  require("nvim-tree").setup()
+  require("nvim-tree").setup({
+    sort_by = "case_sensitive",
+    view = {
+      adaptive_size = true,
+      number = false,
+      mappings = {
+        list = {
+          { key = "u", action = "dir_up" },
+          { key = "d", action = "cd" },
+          { key = "<space>", action = "toggle" },
+        },
+      },
+    },
+    renderer = {
+      indent_markers = {
+        enable = true,
+        icons = {
+          corner = "└ ",
+          edge = "│ ",
+          none = "  ",
+        },
+      },
+      icons = {
+        show = {
+          folder_arrow = false,
+        },
+      },
+    },
+  })
+
+  -- Undo tree
+--  use { 'mbbill/undotree',
+--    cmd = 'UndotreeToggle',
+--    config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
+--  }
+
+  require('indent_blankline').setup()
+
+  -- Status bar
+  use { 'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
+  require('lualine').setup {
+    options = {
+      icons_enabled = true,
+      theme = 'auto',
+      component_separators = { left = '', right = ''},
+      section_separators = { left = '', right = ''},
+      disabled_filetypes = {},
+      always_divide_middle = true,
+      globalstatus = false,
+    },
+    sections = {
+      lualine_a = {'mode'},
+      lualine_b = {'branch', 'diff', 'diagnostics'},
+      lualine_c = {'filename'},
+      lualine_x = {'encoding', 'fileformat', 'filetype'},
+      lualine_y = {'progress'},
+      lualine_z = {'location'}
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {'filename'},
+      lualine_x = {'location'},
+      lualine_y = {},
+      lualine_z = {}
+    },
+    tabline = {},
+    extensions = {}
+  }
+  
+  -- Marks
+  use { 'chentoast/marks.nvim' }
+  require('marks').setup {
+    force_write_shada = true,
+  }
+
+  -- Completion
+  use { 'ms-jpq/coq_nvim' }
+  use { 'ms-jpq/coq.artifacts' }
+  local lsp = require "lspconfig"
+  local coq = require "coq"
+
+  lsp.pyright.setup{}
+  lsp.pyright.setup(coq.lsp_ensure_capabilities{})
+  lsp.eslint.setup{}
+  lsp.eslint.setup(coq.lsp_ensure_capabilities{})
+  lsp.clangd.setup{}
+  lsp.clangd.setup(coq.lsp_ensure_capabilities{})
+  lsp.java_language_server.setup{}
+  lsp.java_language_server.setup(coq.lsp_ensure_capabilities{})
+  vim.cmd([[COQnow -s]])
+
+  -- Treesitter
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  require('nvim-treesitter.configs').setup({
+    -- A list of parser names, or "all"
+    ensure_installed = "all",
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+    -- Automatically install missing parsers when entering buffer
+    auto_install = true,
+    highlight = {
+      -- `false` will disable the whole extension
+      enable = true,
+      -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+      -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+      -- the name of the parser)
+      -- list of language that will be disabled
+      -- disable = { "c", "rust" },
+      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+      -- Using this option may slow down your editor, and you may see some duplicate highlights.
+      -- Instead of true it can also be a list of languages
+      additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true
+    }
+  })
+
+  -- Smooth scroll
+  use { 'karb94/neoscroll.nvim' }
+  require('neoscroll').setup({
+    easing_function = "quadratic"
+  })
+  local t = {}
+  -- Syntax: t[keys] = {function, {function arguments}}
+  t['<C-u>'] = {'scroll', {'-vim.wo.scroll', 'true', '100'}}
+  t['<C-d>'] = {'scroll', { 'vim.wo.scroll', 'true', '100'}}
+  t['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '200'}}
+  t['<C-f>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '200'}}
+  t['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}}
+  t['<C-e>'] = {'scroll', { '0.10', 'false', '100'}}
+  t['zt']    = {'zt', {'100'}}
+  t['zz']    = {'zz', {'100'}}
+  t['zb']    = {'zb', {'100'}}
+  require('neoscroll.config').set_mappings(t)
+
+  -- Fuzzy Search
+  use { 'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- Debugging
+  use { 'mfussenegger/nvim-dap' }
+  local dap = require('dap')
+  dap.adapters.python = {
+    type = 'executable';
+    command = '/usr/local/bin/python3';
+    args = { '-m', 'debugpy.adapter' };
+  }
+  dap.configurations.python = {
+    {
+      type = 'python';
+      request = 'launch';
+      name = "Launch file";
+      program = "${file}";
+      pythonPath = function()
+        return '/usr/local/bin/python3'
+      end;
+    },
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
+  -- Put this at the end after all plugin
   if packer_bootstrap then
     require('packer').sync()
   end
