@@ -29,6 +29,7 @@ export PS4='+xtrace $LINENO:'
 # Aliases {{{
 
 alias vi='nvim'
+alias zshconfig="vi ~/.zshrc"
 
 alias cl='clear'
 
@@ -84,14 +85,17 @@ plugins=(git docker npm vi-mode)
 
 # VI mode!
 bindkey -v
+
 export KEYTIMEOUT=1
-# function zle-line-init zle-keymap-select {
-#     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-#     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git_custom_status) $EPS1"
-#     zle reset-prompt
-# }
-# zle -N zle-line-init
-# zle -N zle-keymap-select
+
+# Insert last argument 
+vi-yank-arg() {
+  NUMERIC=1 zle .vi-add-next
+  zle .insert-last-word
+}
+zle -N vi-yank-arg
+bindkey -M vicmd _ vi-yank-arg
+
 # }}}
 # Oh My ZSH {{{
 # If you come from bash you might have to change your $PATH.
@@ -194,5 +198,24 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# }}}
+# UI {{{
+
+# Right side of prompt
+# + VI mode indicator
+# + Time stamp
+function zle-line-init zle-keymap-select {
+    PROMPT_TIMESTAMP="%{$fg[magenta]%}%D{%m/%f}%@%{$reset_color%}"
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $PROMPT_TIMESTAMP$EPS1"
+    #RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+RPROMPT="%{$fg[cyan]%}%@%{$reset_color%}"
+
 # }}}
 # enable folding  vim:foldmethod=marker:foldlevel=0
