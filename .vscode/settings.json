@@ -108,7 +108,6 @@
     },
     "breadcrumbs.enabled": true,
     "editor.suggestSelection": "first",
-    "window.nativeTabs": false,
     "latex-workshop.view.pdf.viewer": "tab",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
@@ -137,6 +136,6 @@
     "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "python.languageServer": "Default",
     "notebook.output.textLineLimit": 1000,
-    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
     "editor.folding": true,
 }
