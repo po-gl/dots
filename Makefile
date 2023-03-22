@@ -57,7 +57,7 @@ copy-tmux:
 copy-nvim:
 	rm -f ~/.config/nvim/init.vim
 	rm -rf ~/.config/nvim/lua/
-	cp -R .config/nvim/ ~/.config/
+	cp -R .config/nvim/ ~/.config/nvim/
 
 copy-vim:
 	rm -rf ~/.vim/
