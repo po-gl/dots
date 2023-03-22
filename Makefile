@@ -24,7 +24,8 @@ install-vundle:
 	vim +PluginInstall +qall
 
 install-nvim-packer:
-	nvim +PackerCompile +PackerInstall +qall
+	if [! -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim ] ; then git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim; fi;
+	nvim --headless +PackerCompile +PackerInstall +qa
 
 install-tmux-plugin-manager:
 	if [ ! -d ~/.tmux/plugins/tpm ] ; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi;
@@ -56,7 +57,7 @@ copy-tmux:
 copy-nvim:
 	rm -f ~/.config/nvim/init.vim
 	rm -rf ~/.config/nvim/lua/
-	cp -R .config/nvim/ ~/.config/nvim/
+	cp -R .config/nvim/ ~/.config/
 
 copy-vim:
 	rm -rf ~/.vim/
