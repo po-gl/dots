@@ -1,54 +1,97 @@
+Adobe After Effects 2023
+Adobe Creative Cloud
+Adobe Media Encoder 2023
 Affinity Designer.app
+Android Studio.app
+Apollo.app
 Aseprite.app
+Battle.net.app
+Blackmagic Disk Speed Test.app
 Blender.app
-CLion.app
+Boris Continuum OFX HitFilm 2021.5
+Codye.app
+Compressor.app
+Coolors.app
+Copilot for Xcode.app
+Desktop
+Dialogue.app
 Discord.app
 Docker.app
-EtreCheck.app
-GarageBand.app
+Dolphin Updater.app
+Dolphin.app
+Enjoyable.app
+Figma.app
+Final Cut Pro.app
+Firefox.app
+Frescobaldi.app
+Gifski.app
 Godot.app
 Google Chrome.app
+Grammarly Desktop.app
 Grammarly for Safari.app
-Honey.app
+GrandPerspective.app
 IINA.app
-Intel Power Gadget
+Imaging Edge
+Imaging Edge Desktop.app
+Inkscape.app
 IntelliJ IDEA CE.app
+JetBrains Toolbox.app
 Kap.app
 Keynote.app
-Keys.app
-Logi Options.app
+LilyPond.app
+Logic Pro X.app
+Lunar Client.app
 Magnet.app
-Mendeley Desktop.app
+MainStage 3.app
+Maxon Cinema 4D 2023
+Microsoft Edge Dev.app
 Microsoft Excel.app
 Microsoft OneNote.app
 Microsoft PowerPoint.app
 Microsoft Remote Desktop.app
 Microsoft Word.app
-MidiAndMusicXmlPlayer.app
 Minecraft.app
 Moonlight.app
+Motion.app
+MultiMC.app
+MuseScore 2.app
+MuseScore 4.app
+Noir.app
+Nova.app
 Numbers.app
 Numi.app
+OBS.app
+OpenEmu.app
+PICO-8.app
 Pages.app
-PiPifier.app
+Parallels Desktop.app
+R.app
+RStudio.app
 SF Symbols.app
 Safari.app
+Slack.app
 Spotify.app
 Steam.app
+Steam.old.app
 TablePlus.app
-Tagger.app
 TaskExplorer.app
+TestFlight.app
 The Unarchiver.app
 Tiled.app
 TimeMachineEditor.app
-ToggleScrollDirection.app
+Transmission.app
+Unity
+Unity Hub.app
 Utilities
+Visual Studio Code - Insiders.app
 Visual Studio Code.app
+Visual Studio.app
 Wipr.app
 Wireshark.app
 Xcode.app
 balenaEtcher.app
 iTerm.app
+kate.app
 krita.app
-openglex6.app
+logioptionsplus.app
 zoom.us.app

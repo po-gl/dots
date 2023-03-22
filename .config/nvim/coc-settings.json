@@ -1,0 +1,16 @@
+{
+  "suggest.virtualText": true,
+
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": true,
+  "diagnostic.checkCurrentLine": false,
+
+  "python.pythonPath": "python3",
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--disable=C0114,C0115,C0116"],
+
+  "languageserver": {
+
+  }
+}
+

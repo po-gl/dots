@@ -47,10 +47,6 @@
         "statusBar.noFolderBackground": "#2b7275",
         "statusBar.debuggingBackground": "#2b7275"
     },
-
-
-    // Tab and Spaces settings
-    "editor.tabSize": 2,
     "files.autoSave": "onFocusChange",
     "workbench.startupEditor": "newUntitledFile",
 
@@ -78,8 +74,9 @@
 
     "[python]": {
         "editor.tabSize": 4,
+        "editor.formatOnType": true,
     },
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "all",
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.advanced.messages": {
@@ -132,10 +129,41 @@
     //     "asvetliakov.vscode-neovim": 1
     // },
     "vim.enableNeovim": true,
-
     "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "python.languageServer": "Default",
     "notebook.output.textLineLimit": 1000,
-    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "editor.folding": true,
+    "cSpell.userWords": [
+        "appendleft",
+        "denoms",
+        "diagonalization",
+        "dups",
+        "extendleft",
+        "freqs",
+        "Glines",
+        "Hola",
+        "logn",
+        "mlogm",
+        "nlogn",
+        "nums",
+        "soln"
+    ],
+    "boot-java.rewrite.reconcile": true,
+    "javascript.inlayHints.parameterTypes.enabled": true,
+    "typescript.inlayHints.parameterNames.enabled": "all",
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "cmake.configureOnOpen": true,
+    "editor.inlineSuggest.enabled": true,
 }

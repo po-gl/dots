@@ -5,6 +5,12 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/porter
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/X.X.0/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH" # eval "$(rbenv init -)"
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
+export PATH="$PATH:/opt/homebrew/Caskroom/flutter/2.0.1/flutter/bin"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -13,7 +19,7 @@ export PATH="/usr/local/bin:$PATH"
 
 export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
 
-export EDITOR=vim
+export EDITOR=nvim
 
 export CPLUS_INCLUDE_PATH="/usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/include/python3.7m/"
 
