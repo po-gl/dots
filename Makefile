@@ -51,14 +51,11 @@ copy-gitconfig:
 	cp .gitconfig ~/
 
 copy-tmux:
-	rm -rf ~/.tmux/
-	cp -R .tmux/ ~/.tmux/
 	cp .tmux.conf ~/
 
 copy-nvim:
 	rm -f ~/.config/nvim/init.vim
 	rm -rf ~/.config/nvim/lua/
-	rm -rf ~/.config/nvim/plugin/
 	cp -R .config/nvim/ ~/.config/nvim/
 
 copy-vim:
@@ -90,14 +87,13 @@ get-chunkwmrc:
 
 get-docker:
 	rm -rf .docker/
-	cp -R ~/.docker/ .docker/
+	mkdir .docker/
+	cp ~/.docker/config.json .docker/
 
 get-gitconfig:
 	cp ~/.gitconfig .
 
 get-tmux:
-	rm -rf .tmux/
-	cp -R ~/.tmux/ .tmux/
 	cp ~/.tmux.conf .
 
 get-nvim:
@@ -113,4 +109,8 @@ get-vim:
 
 get-vscode:
 	rm -rf .vscode/
-	cp -R ~/.vscode/ .vscode/
+	mkdir .vscode/
+	cp ~/.vscode/argv.json .vscode/
+	cp ~/.vscode/keybindings.json .vscode/
+	cp ~/.vscode/settings.json .vscode/
+
