@@ -4,6 +4,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 return require('packer').startup(function(use)
     use { 'wbthomason/packer.nvim' }
 --    use { 'neovim/nvim-lspconfig' } -- default lsp server
@@ -29,65 +36,73 @@ return require('packer').startup(function(use)
 --    vim.cmd([[COQnow -s]])
 
     -- Color scheme
-    use { 'luisiacc/gruvbox-baby' }
-    require('gruvbox-baby.colors').config()
+    use { 'luisiacc/gruvbox-baby',
+        config = function()
+          require('gruvbox-baby.colors').config()
+        end
+    }
     vim.g.gruvbox_baby_keyword_style = "italic"
 
-    use { 'ellisonleao/gruvbox.nvim' }
-    require('gruvbox').setup({
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = true,
-          operators = true,
-          comments = true,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "", -- can be "hard", "soft" or empty string
-        overrides = {},
-    })
+    use { 'ellisonleao/gruvbox.nvim',
+        config = function()
+          require('gruvbox').setup({
+            undercurl = true,
+            underline = true,
+            bold = true,
+            italic = {
+              strings = true,
+              operators = true,
+              comments = true,
+            },
+            strikethrough = true,
+            invert_selection = false,
+            invert_signs = false,
+            invert_tabline = false,
+            invert_intend_guides = false,
+            inverse = true, -- invert background for search, diffs, statuslines and errors
+            contrast = "", -- can be "hard", "soft" or empty string
+            overrides = {},
+          })
+        end
+    }
     
     -- File Exploring
     use { 'kyazdani42/nvim-tree.lua',
         requires = {
             'kyazdani42/nvim-web-devicons',
         },
-    }
-    require("nvim-tree").setup({
-        sort_by = "case_sensitive",
-        view = {
-            adaptive_size = true,
-            number = false,
-            mappings = {
-                list = {
-                    { key = "u", action = "dir_up" },
-                    { key = "d", action = "cd" },
-                    { key = "<space>", action = "toggle" },
+        config = function()
+          require("nvim-tree").setup({
+            sort_by = "case_sensitive",
+            view = {
+                adaptive_size = true,
+                number = false,
+                mappings = {
+                    list = {
+                        { key = "u", action = "dir_up" },
+                        { key = "d", action = "cd" },
+                        { key = "<space>", action = "toggle" },
+                    },
                 },
             },
-        },
-        renderer = {
-            indent_markers = {
-                enable = true,
+            renderer = {
+                indent_markers = {
+                    enable = true,
+                    icons = {
+                        corner = "└ ",
+                        edge = "│ ",
+                        none = "  ",
+                    },
+                },
                 icons = {
-                    corner = "└ ",
-                    edge = "│ ",
-                    none = "  ",
+                    show = {
+                        folder_arrow = false,
+                    },
                 },
             },
-            icons = {
-                show = {
-                    folder_arrow = false,
-                },
-            },
-        },
-    })
+        })
+      end
+    }
 
     -- Undo tree
 --    use { 'mbbill/undotree',
@@ -96,95 +111,111 @@ return require('packer').startup(function(use)
 --    }
 
 
-    use "lukas-reineke/indent-blankline.nvim"
-    require('indent_blankline').setup()
+    use { "lukas-reineke/indent-blankline.nvim",
+        config = function()
+          require('indent_blankline').setup()
+        end
+    }
 
     -- Status bar
     use { 'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' }
-    }
-    require('lualine').setup {
-        options = {
-            icons_enabled = true,
-            theme = 'auto',
-            component_separators = { left = '', right = ''},
-            section_separators = { left = '', right = ''},
-            disabled_filetypes = {},
-            always_divide_middle = true,
-            globalstatus = false,
-        },
-        sections = {
-            lualine_a = {'mode'},
-            lualine_b = {'branch', 'diff', 'diagnostics'},
-            lualine_c = {'filename'},
-            lualine_x = {'encoding', 'fileformat', 'filetype'},
-            lualine_y = {'progress'},
-            lualine_z = {'location'}
-        },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = {'filename'},
-            lualine_x = {'location'},
-            lualine_y = {},
-            lualine_z = {}
-        },
-        tabline = {},
-        extensions = {}
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = function()
+          require('lualine').setup({
+            options = {
+                icons_enabled = true,
+                theme = 'auto',
+                component_separators = { left = '', right = ''},
+                section_separators = { left = '', right = ''},
+                disabled_filetypes = {},
+                always_divide_middle = true,
+                globalstatus = false,
+            },
+            sections = {
+                lualine_a = {'mode'},
+                lualine_b = {'branch', 'diff', 'diagnostics'},
+                lualine_c = {'filename'},
+                lualine_x = {'encoding', 'fileformat', 'filetype'},
+                lualine_y = {'progress'},
+                lualine_z = {'location'}
+            },
+            inactive_sections = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {'filename'},
+                lualine_x = {'location'},
+                lualine_y = {},
+                lualine_z = {}
+            },
+            tabline = {},
+            extensions = {}
+          })
+        end
     }
     
     -- Marks
-    use { 'chentoast/marks.nvim' }
-    require('marks').setup {
-        force_write_shada = true,
+    use { 'chentoast/marks.nvim',
+        config = function()
+          require('marks').setup({
+              force_write_shada = true,
+          })
+        end
     }
 
 
     -- Treesitter
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    require('nvim-treesitter.configs').setup({
-        -- A list of parser names, or "all"
-        ensure_installed = "all",
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-        -- Automatically install missing parsers when entering buffer
-        auto_install = true,
-        highlight = {
-            -- `false` will disable the whole extension
-            enable = true,
-            -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-            -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-            -- the name of the parser)
-            -- list of language that will be disabled
-            -- disable = { "c", "rust" },
-            -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-            -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-            -- Using this option may slow down your editor, and you may see some duplicate highlights.
-            -- Instead of true it can also be a list of languages
-            additional_vim_regex_highlighting = false,
-        },
-        indent = {
-            enable = true
-        }
-    })
+    use { 'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+          require('nvim-treesitter.configs').setup({
+            -- A list of parser names, or "all"
+            ensure_installed = "all",
+            -- Install parsers synchronously (only applied to `ensure_installed`)
+            sync_install = false,
+            -- Automatically install missing parsers when entering buffer
+            auto_install = true,
+            highlight = {
+                -- `false` will disable the whole extension
+                enable = true,
+                -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+                -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+                -- the name of the parser)
+                -- list of language that will be disabled
+                -- disable = { "c", "rust" },
+                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+                -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+                -- Using this option may slow down your editor, and you may see some duplicate highlights.
+                -- Instead of true it can also be a list of languages
+                additional_vim_regex_highlighting = false,
+            },
+            indent = {
+                enable = true
+            }
+          })
+        end
+    }
 
     -- Smooth scroll
-    use { 'karb94/neoscroll.nvim' }
-    require('neoscroll').setup({
-        easing_function = "quadratic"
-    })
-    local t = {}
-    -- Syntax: t[keys] = {function, {function arguments}}
-    t['<C-u>'] = {'scroll', {'-vim.wo.scroll', 'true', '100'}}
-    t['<C-d>'] = {'scroll', { 'vim.wo.scroll', 'true', '100'}}
-    t['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '200'}}
-    t['<C-f>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '200'}}
-    t['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}}
-    t['<C-e>'] = {'scroll', { '0.10', 'false', '100'}}
-    t['zt']    = {'zt', {'100'}}
-    t['zz']    = {'zz', {'100'}}
-    t['zb']    = {'zb', {'100'}}
-    require('neoscroll.config').set_mappings(t)
+    use { 'karb94/neoscroll.nvim',
+        config = function()
+          require('neoscroll').setup({
+              easing_function = "quadratic"
+          })
+
+          local t = {}
+          -- Syntax: t[keys] = {function, {function arguments}}
+          t['<C-u>'] = {'scroll', {'-vim.wo.scroll', 'true', '100'}}
+          t['<C-d>'] = {'scroll', { 'vim.wo.scroll', 'true', '100'}}
+          t['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '200'}}
+          t['<C-f>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '200'}}
+          t['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}}
+          t['<C-e>'] = {'scroll', { '0.10', 'false', '100'}}
+          t['zt']    = {'zt', {'100'}}
+          t['zz']    = {'zz', {'100'}}
+          t['zb']    = {'zb', {'100'}}
+          require('neoscroll.config').set_mappings(t)
+        end
+    }
 
     -- Fuzzy Search
     use { 'nvim-telescope/telescope.nvim',
