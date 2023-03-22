@@ -1,14 +1,17 @@
 default: # Print usage info
+	@printf "\033[33minstall-tools:  \033[0minstall nvim and tmux with plugins and copy over gitconfig\n"
 	@printf "\033[33minstall:        \033[0minstall packages, copy over configurations, and install plugins\n"
 	@printf "\033[33mcopy:           \033[0mcopy configuration to system\n"
 	@printf "\033[33mgather:         \033[0mcopy current configuration into this git directory\n"
 
 
-install: install-brew-bundle copy install-vundle install-tmux-plugin-manager
+install: install-brew-bundle copy install-nvim-packer install-tmux-plugin-manager
 
-copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-nvim copy-vim copy-vscode
+install-tools: copy-nvim copy-tmux copy-gitconfig install-nvim-packer install-tmux-plugin-manager
 
-gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-nvim get-vim get-vscode
+copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-nvim copy-vscode
+
+gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-nvim get-vscode
 
 
 # Installation rules
