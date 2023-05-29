@@ -6,6 +6,7 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/porter
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/X.X.0/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH" # eval "$(rbenv init -)"
+
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
@@ -30,6 +31,9 @@ export PYTHON_INCLUDE_DIR="/usr/local/Frameworks/Python.framework/Versions/3.7/H
 export MUSIC_ALARM='/Users/porter/Music/Intervals/Libra.mp3'
 
 export PS4='+xtrace $LINENO:'
+
+
+source $HOME/.zshrc.secrets
 
 # }}}
 # Aliases {{{
@@ -212,7 +216,7 @@ source $ZSH/oh-my-zsh.sh
 # + VI mode indicator
 # + Time stamp
 function zle-line-init zle-keymap-select {
-    PROMPT_TIMESTAMP="%{$fg[magenta]%}%D{%m/%f}%@%{$reset_color%}"
+    PROMPT_TIMESTAMP="%{$fg[magenta]%}%D{%m/%d} %@%{$reset_color%}"
     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $PROMPT_TIMESTAMP$EPS1"
     #RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
@@ -225,3 +229,6 @@ RPROMPT="%{$fg[cyan]%}%@%{$reset_color%}"
 
 # }}}
 # enable folding  vim:foldmethod=marker:foldlevel=0
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

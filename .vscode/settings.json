@@ -166,4 +166,6 @@
     },
     "cmake.configureOnOpen": true,
     "editor.inlineSuggest.enabled": true,
+    "github.copilot.advanced": {},
+    "window.zoomLevel": 1,
 }
