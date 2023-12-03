@@ -9,9 +9,9 @@ install: install-brew-bundle copy install-nvim-packer install-tmux-plugin-manage
 
 install-tools: copy-nvim copy-tmux copy-gitconfig install-nvim-packer install-tmux-plugin-manager
 
-copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-nvim copy-vscode
+copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-nvim copy-wm copy-vscode
 
-gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-nvim get-vscode
+gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-nvim get-wm get-vscode
 
 
 # Installation rules
@@ -64,6 +64,12 @@ copy-vim:
 	cp -R .vim/ ~/.vim/
 	cp .vimrc ~/
 
+copy-wm:
+	rm -rf ~/.config/yabai/
+	rm -rf ~/.config/skhd/
+	cp -R .config/yabai/ ~/.config/yabai/
+	cp -R .config/skhd/ ~/.config/skhd/
+
 copy-vscode:
 	rm -rf ~/.vscode/
 	cp -R .vscode/ ~/.vscode/
@@ -107,6 +113,12 @@ get-vim:
 	rm -rf .vim/
 	cp -R ~/.vim/ .vim/
 	cp ~/.vimrc .
+
+get-wm:
+	rm -rf .config/yabai/
+	cp -R ~/.config/yabai/ .config/yabai/
+	rm -rf .config/skhd/
+	cp -R ~/.config/skhd/ .config/skhd/
 
 get-vscode:
 	rm -rf .vscode/
