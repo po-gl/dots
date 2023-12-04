@@ -1,6 +1,9 @@
 [user]
 	email = porterglines@gmail.com
 	name = po-gl
+  signingkey = 6398A605AFDB8212
+[commit]
+  gpgsign = false
 [diff]
 	tool = vimdiff
 [difftool]

@@ -13,6 +13,9 @@
 .vim/bundle/**
 .vim/colors/**
 
+.config/nvim/plugin/
+.config/nvim/undo/
+
 # Don't include vscode extension
 # because it's easy to reinstall them
 # (if there's a special one, re-include it)

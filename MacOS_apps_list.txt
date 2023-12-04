@@ -6,6 +6,7 @@ Affinity Designer.app
 Android Studio.app
 Apollo.app
 Arc.app
+ArmGNUToolchain
 Aseprite.app
 Blackmagic Disk Speed Test.app
 Blender.app
@@ -16,6 +17,7 @@ Coolors.app
 Copilot for Xcode.app
 Desktop
 Dialogue.app
+Diffusers.app
 Discord.app
 Docker.app
 Dolphin Updater.app
@@ -42,7 +44,7 @@ LilyPond.app
 Logic Pro X.app
 Lunar Client.app
 Magnet.app
-MainStage 3.app
+MainStage.app
 Maxon Cinema 4D 2023
 Microsoft Edge Dev.app
 Microsoft Excel.app
@@ -82,13 +84,16 @@ Transmission.app
 Unity
 Unity Hub.app
 Utilities
+Vimlike.app
 Visual Studio Code - Insiders.app
 Visual Studio Code.app
 Visual Studio.app
 Wipr.app
 Wireshark.app
-Xcode.app
+Xcode-beta.app
+Zed Preview.app
 balenaEtcher.app
+calibre.app
 iTerm.app
 kate.app
 krita.app

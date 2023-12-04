@@ -124,7 +124,7 @@ return require('packer').startup(function(use)
 
   use { "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require('indent_blankline').setup()
+      require('ibl').setup()
     end
   }
 
@@ -163,6 +163,7 @@ return require('packer').startup(function(use)
       })
     end
   }
+
 
   -- Marks
   use { 'chentoast/marks.nvim',
@@ -234,6 +235,26 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- Refactoring
+  use {
+    'ThePrimeagen/refactoring.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter'
+    },
+    config = function()
+      require('refactoring').setup({})
+
+      require('telescope').load_extension('refactoring')
+
+      vim.keymap.set(
+        {"n", "x"},
+        "<leader>rr",
+        function() require('telescope').extensions.refactoring.refactors() end
+      )
+    end
+  }
+
   -- Other fuzzy searcher
   -- use { 'junegunn/fzf', run = ":call fzf#install()" }
   -- use { 'junegunn/fzf.vim' }
@@ -297,6 +318,8 @@ return require('packer').startup(function(use)
   -- Rust Development
   -- use { 'simrat39/rust-tools.nvim' }
 
+  -- Web 
+  -- use { 'mattn/emmet-vim' } -- causes red underlining, don't want to fix rn
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugin

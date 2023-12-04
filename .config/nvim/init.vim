@@ -6,6 +6,7 @@
 
 " syntax on
 set number
+set relativenumber
 " spellcheck
 set spell
 set cursorline
@@ -21,6 +22,7 @@ set linebreak
 
 " show results while typing
 set incsearch
+set ignorecase
 
 set undofile
 set undodir=$HOME/.config/nvim/undo
@@ -50,6 +52,8 @@ set clipboard=unnamedplus
 " save on focus lost
 autocmd BufLeave,FocusLost * silent! wall
 
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 "}}}
 "" Plugins {{{
 " Check .config/nvim/lua/plugins.lua
@@ -78,6 +82,9 @@ nnoremap <space><space> za
 
 nnoremap gw :NvimTreeToggle<CR>
  
+" Change tab location
+noremap <A-Left> :-tabmove<CR>
+noremap <A-Right> :+tabmove<CR>
 
 " Multi-window movement
 nnoremap <C-j> <C-w>j
@@ -96,6 +103,23 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" split tab
+nnoremap <C-w>t :tab split<cr>
+
+" Refactoring
+
+" <leader>rr -- refactors through telescope extension, see plugins.lua setup
+xnoremap <leader>re :Refactor extract<space>
+xnoremap <leader>rf :Refactor extract_to_file<space>
+xnoremap <leader>rv :Refactor extract_var<space>
+
+noremap <leader>ri :Refactor inline_var<space>
+nnoremap <leader>rI :Refactor inline_func<space>
+
+nnoremap <leader>rb :Refactor extract_block<space>
+nnoremap <leader>rbf :Refactor extract_block_to_file<space>
+
 
 " Vimspector debugging
 " for normal mode - the word under the cursor
@@ -128,6 +152,10 @@ nmap <silent> <leader>g :TestVisit<CR>
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
+augroup strdr4605
+  autocmd FileType typescript,typescriptreact set makeprg=./node_modules/.bin/tsc\ \\\|\ sed\ 's/(\\(.*\\),\\(.*\\)):/:\\1:\\2:/'
+augroup END
+
 "}}}
 "" Colors {{{
 set termguicolors
@@ -136,9 +164,9 @@ set background=dark
 colorscheme gruvbox-baby
 "}}}
 "" Tabs and Spaces {{{
-set tabstop=2		" visual spaces per tab
-set softtabstop=2	" number of spaces inserted when editing
-set shiftwidth=2	" indentation level
+set tabstop=4		" visual spaces per tab
+set softtabstop=4	" number of spaces inserted when editing
+set shiftwidth=4	" indentation level
 set expandtab		" treat tabs as spaces
 set autoindent      
 set smartindent
@@ -158,6 +186,7 @@ set updatetime=100
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file.
@@ -170,6 +199,10 @@ set signcolumn=yes
 " inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#_select_confirm() : "\<Tab>"
+
+let g:codeium_enabled = v:false
+let g:codeium_tab_fallback = "\t"
+inoremap <silent><nowait><expr> <Tab> codeium#Accept()
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
@@ -210,6 +243,14 @@ function! ShowDocumentation()
   endif
 endfunction
 
+" Scroll documentation if applicable
+if has('nvim-0.4.3') || has('patch-8.2.0750')
+  nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+endif
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -219,6 +260,12 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Snippets
+" inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
+" let g:coc_snippet_next = '<TAB>'
+" let g:coc_snippet_prev = '<S-TAB>'
+
 
 augroup mygroup
   autocmd!
@@ -237,6 +284,10 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Lint project
+nmap <leader>lp  :CocCommand eslint.lintProject<CR>
+" :copen to open quickfix window :ccl to close
 
 " Run the Code Lens action on the current line.
 nmap <leader>cl  <Plug>(coc-codelens-action)

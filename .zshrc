@@ -1,11 +1,16 @@
 # Path Variables {{{
+#
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+
 # Setting PATH for Python 3.6
 # The original version is saved in .bash_profile.pysave
 export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/porter/Library/Python/3.6/bin:$PATH"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/X.X.0/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH" # eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
@@ -15,8 +20,8 @@ export PATH="$PATH:/opt/homebrew/Caskroom/flutter/2.0.1/flutter/bin"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
 export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
 
@@ -27,6 +32,12 @@ export CPLUS_INCLUDE_PATH="/usr/local/Cellar/python/3.7.3/Frameworks/Python.fram
 export PYTHON_LIBRARY="/usr/local/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7.dylib"
 export PYTHON_INCLUDE_DIR="/usr/local/Frameworks/Python.framework/Versions/3.7/Headers/"
 
+export PICO_SDK_PATH="/usr/local/pi/pico-sdk"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # PG Set music alarm environment variable
 export MUSIC_ALARM='/Users/porter/Music/Intervals/Libra.mp3'
 
@@ -35,10 +46,12 @@ export PS4='+xtrace $LINENO:'
 
 source $HOME/.zshrc.secrets
 
+
 # }}}
 # Aliases {{{
 
 alias vi='nvim'
+alias tmux='/opt/homebrew/bin/tmux'
 alias zshconfig="vi ~/.zshrc"
 
 alias cl='clear'
@@ -52,6 +65,10 @@ alias ibrew="arch -x86_64 /usr/local/bin/brew"
 alias brew="/opt/homebrew/bin/brew"
 
 alias brew-update="brew update; brew upgrade; ibrew update; ibrew upgrade"
+
+alias wm-start="yabai --start-service && skhd --start-service"
+alias wm-stop="yabai --stop-service && skhd --stop-service"
+alias wm-restart="yabai --restart-service && skhd --restart-service"
 
 # PG Show/Hide files in finder TODO: These should be functions
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
@@ -89,7 +106,13 @@ function r() { grep "$1" ${@:2} -R . }
 
 # }}}
 # Plugins {{{
-plugins=(git docker npm vi-mode)
+plugins=(
+  git
+  docker
+  npm
+  vi-mode
+  zsh-autosuggestions
+)
 # }}}
 # General {{{
 
@@ -98,6 +121,15 @@ bindkey -v
 
 export KEYTIMEOUT=1
 
+# GPG settings
+export GPG_TTY=$(tty)
+
+# fzf settings and keybindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+
 # Insert last argument 
 vi-yank-arg() {
   NUMERIC=1 zle .vi-add-next
@@ -105,6 +137,9 @@ vi-yank-arg() {
 }
 zle -N vi-yank-arg
 bindkey -M vicmd _ vi-yank-arg
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 
 # }}}
 # Oh My ZSH {{{
@@ -229,6 +264,3 @@ RPROMPT="%{$fg[cyan]%}%@%{$reset_color%}"
 
 # }}}
 # enable folding  vim:foldmethod=marker:foldlevel=0
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-

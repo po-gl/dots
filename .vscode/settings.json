@@ -2,14 +2,17 @@
     // Colors:
     "editor.tokenColorCustomizations": {
         "[DuoTone Dark Sea]": {
-            "textMateRules": [{
-                "scope": "punctuation", "settings": {
-                    "foreground": "#a3b4c4"
+            "textMateRules": [
+                {
+                    "scope": "punctuation",
+                    "settings": {
+                        "foreground": "#a3b4c4"
+                    }
                 }
-            }]
+            ]
         }
     },
-    "workbench.colorCustomizations":{
+    "workbench.colorCustomizations": {
         "[Gruvbox Light Soft]": {
             "titleBar.activeBackground": "#F2E5BC",
             "titleBar.activeForeground": "#63584f"
@@ -43,13 +46,28 @@
             "statusBar.noFolderBackground": "#528464",
             "statusBar.debuggingBackground": "#C66644"
         },
+        "[Gruvbox Material Dark]": {
+            "statusBar.foreground": "#d6c6b3",
+            "statusBar.background": "#3C6C58",
+            "statusBar.noFolderBackground": "#528464",
+            "statusBar.debuggingBackground": "#D49729",
+            "activityBar.background": "#1D2021",
+            "titleBar.activeBackground": "#1D2021",
+            "tab.activeBackground": "#304041",
+            "tab.inactiveBackground": "#1D2021",
+            "editorGroupHeader.tabsBackground": "#1D2021"
+        },
+        "sideBar.border": "#4a855f",
+        "panel.border": "#c06881",
+        "terminal.border": "#c38f2e",
+        "editorGroup.border": "#4a835e",
+        "peekView.border": "#c38f2e",
         "statusBar.background": "#2b7275",
         "statusBar.noFolderBackground": "#2b7275",
         "statusBar.debuggingBackground": "#2b7275"
     },
     "files.autoSave": "onFocusChange",
     "workbench.startupEditor": "newUntitledFile",
-
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=numpy,wx"
     ],
@@ -58,9 +76,7 @@
     "workbench.editor.tabCloseButton": "left",
     "workbench.sideBar.location": "right",
     "javascript.implicitProjectConfig.checkJs": true,
-    "[javascriptreact]": {
-        
-    },
+    "[javascriptreact]": {},
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "todohighlight.defaultStyle": {
@@ -68,13 +84,12 @@
         "backgroundColor": "#fff",
     },
     "todohighlight.isEnable": false,
-
     "vim.disableExtension": false,
-    "editor.minimap.enabled": true,
-
     "[python]": {
         "editor.tabSize": 4,
         "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
     },
     "editor.renderWhitespace": "all",
     "gitlens.currentLine.enabled": false,
@@ -89,9 +104,6 @@
         "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
     },
-
-    // "editor.fontFamily": "'Iosevka Term', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 12,
     "workbench.iconTheme": "eq-material-theme-icons-darker",
     "python.linting.enabled": false,
     "pasteImage.path": "${currentFileDir}/.images",
@@ -113,41 +125,42 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "editor.rulers": [
-    
-    ],
-
+    "editor.rulers": [],
     "vim.showMarksInGutter": true,
     "vim.statusBarColorControl": true,
     "vim.statusBarColors.insert": "#ab5781",
     "vim.statusBarColors.normal": "#2b7275",
     "vim.statusBarColors.visual": "#6a8a50",
     "vim.statusBarColors.replace": "#c25960",
-
-    // "extensions.experimental.affinity": {
-    //     "vscodevim.vim": 1,
-    //     "asvetliakov.vscode-neovim": 1
-    // },
-    "vim.enableNeovim": true,
     "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "python.languageServer": "Default",
     "notebook.output.textLineLimit": 1000,
-    "workbench.colorTheme": "Gruvbox Dark Hard",
     "editor.folding": true,
     "cSpell.userWords": [
         "appendleft",
+        "Assistantship",
         "denoms",
         "diagonalization",
         "dups",
         "extendleft",
+        "fontawesome",
+        "fortawesome",
         "freqs",
         "Glines",
         "Hola",
+        "issuetracker",
+        "llms",
         "logn",
+        "mindmap",
         "mlogm",
         "nlogn",
         "nums",
-        "soln"
+        "openai",
+        "Pomodoro",
+        "quadtree",
+        "reactflow",
+        "soln",
+        "thoughtorganizer"
     ],
     "boot-java.rewrite.reconcile": true,
     "javascript.inlayHints.parameterTypes.enabled": true,
@@ -167,5 +180,35 @@
     "cmake.configureOnOpen": true,
     "editor.inlineSuggest.enabled": true,
     "github.copilot.advanced": {},
+    "editor.formatOnSave": true,
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    },
+    "window.titleBarStyle": "custom",
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "terminal.external.osxExec": "iTerm2.app",
+    "editor.minimap.enabled": false,
+    "vim.history": 200,
+    "editor.smoothScrolling": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+    "search.quickOpen.includeSymbols": true,
+    "redhat.telemetry.enabled": true,
+    "editor.linkedEditing": true,
+    "git.autofetch": true,
+    "vim.neovimUseConfigFile": true,
+    "vim.enableNeovim": true,
+    "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "workbench.tree.indent": 16,
+    "workbench.tree.renderIndentGuides": "always",
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.maxTokenizationLineLength": 2500
+    },
+    "editor.tabSize": 2,
+    "cSpell.ignoreWords": [
+        "nodrag"
+    ],
     "window.zoomLevel": 1,
 }

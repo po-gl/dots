@@ -77,5 +77,9 @@ PS1='\h:\W \u\$ \[$(~/.iterm2/it2setkeylabel set status "$(test -d .git && (git 
      [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
          . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
  }
+
+# fzf settings
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # }}}
 # enable folding  vim:foldmethod=marker:foldlevel=0
+
