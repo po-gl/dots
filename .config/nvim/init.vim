@@ -172,6 +172,8 @@ set autoindent
 set smartindent
 
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 "}}}
 "" Coc Completion config {{{
 " Some servers have issues with backup files, see #649.

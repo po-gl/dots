@@ -3,6 +3,7 @@ Adobe After Effects 2023
 Adobe Creative Cloud
 Adobe Media Encoder 2023
 Affinity Designer.app
+Android File Transfer.app
 Android Studio.app
 Apollo.app
 Arc.app
@@ -17,7 +18,6 @@ Coolors.app
 Copilot for Xcode.app
 Desktop
 Dialogue.app
-Diffusers.app
 Discord.app
 Docker.app
 Dolphin Updater.app
@@ -25,7 +25,6 @@ Dolphin.app
 Enjoyable.app
 Figma.app
 Firefox.app
-Frescobaldi.app
 Gifski.app
 Godot.app
 Google Chrome.app
@@ -40,24 +39,13 @@ IntelliJ IDEA CE.app
 JetBrains Toolbox.app
 Kap.app
 Keynote.app
-LilyPond.app
-Logic Pro X.app
-Lunar Client.app
 Magnet.app
-MainStage.app
-Maxon Cinema 4D 2023
-Microsoft Edge Dev.app
 Microsoft Excel.app
 Microsoft OneNote.app
 Microsoft PowerPoint.app
 Microsoft Remote Desktop.app
 Microsoft Word.app
-Minecraft.app
-Moonlight.app
-Motion.app
 MultiMC.app
-MuseScore 2.app
-MuseScore 4.app
 Noir.app
 Nova.app
 Numbers.app
@@ -67,13 +55,14 @@ OpenEmu.app
 PICO-8.app
 Pages.app
 Parallels Desktop.app
+Prime Video.app
 R.app
+RocketSim.app
 SF Symbols.app
 Safari.app
 Slack.app
 Spotify.app
 Steam.app
-Steam.old.app
 TablePlus.app
 TaskExplorer.app
 TestFlight.app
@@ -87,15 +76,11 @@ Utilities
 Vimlike.app
 Visual Studio Code - Insiders.app
 Visual Studio Code.app
-Visual Studio.app
 Wipr.app
 Wireshark.app
-Xcode-beta.app
-Zed Preview.app
+Xcode.app
+Zed.app
 balenaEtcher.app
-calibre.app
 iTerm.app
-kate.app
-krita.app
 logioptionsplus.app
 zoom.us.app

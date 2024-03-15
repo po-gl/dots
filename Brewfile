@@ -29,7 +29,7 @@ brew "neovim"
 brew "nmap"
 brew "node"
 brew "openconnect"
-brew "opencv", link: false
+brew "opencv"
 brew "python@3.7"
 brew "rsync"
 brew "rustup-init"
