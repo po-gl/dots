@@ -74,6 +74,9 @@ copy-vscode:
 	rm -rf ~/.vscode/
 	cp -R .vscode/ ~/.vscode/
 
+copy-latexmk:
+	cp .latexmkrc ~/
+
 
 # Gather rules
 get-brew-bundle:
@@ -127,3 +130,5 @@ get-vscode:
 	cp ~/.vscode/keybindings.json .vscode/
 	cp ~/.vscode/settings.json .vscode/
 
+get-latexmk:
+	cp ~/.latexmkrc .

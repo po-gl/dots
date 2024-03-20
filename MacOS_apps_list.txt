@@ -39,6 +39,7 @@ IntelliJ IDEA CE.app
 JetBrains Toolbox.app
 Kap.app
 Keynote.app
+LTspice.app
 Magnet.app
 Microsoft Excel.app
 Microsoft OneNote.app
@@ -60,6 +61,7 @@ R.app
 RocketSim.app
 SF Symbols.app
 Safari.app
+Skim.app
 Slack.app
 Spotify.app
 Steam.app
