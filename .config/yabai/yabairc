@@ -50,6 +50,10 @@ yabai -m rule --add app='^System Settings$' manage=off
 yabai -m rule --add title='Preferences$' manage=off
 
 yabai -m rule --add app='^Stickies$' manage=off
+yabai -m rule --add app='^Music$' manage=off
+yabai -m rule --add app='^Digital Color Meter$' manage=off
+yabai -m rule --add app='^Simulator$' manage=off
+yabai -m rule --add app='^Pomodoro$' manage=off
 
 # float settings windows
 yabai -m rule --add title='Settings$' manage=off

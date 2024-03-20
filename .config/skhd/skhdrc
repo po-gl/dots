@@ -120,6 +120,7 @@ cmd + ctrl + shift - f : yabai -m window --toggle native-fullscreen
 
 # balance space
 cmd + ctrl - s : yabai -m space --balance
+cmd + ctrl - d : yabai -m window --ratio abs:0.60
 
 # rotate windows in space
 cmd + ctrl - n : yabai -m space --rotate 90
@@ -163,4 +164,5 @@ cmd + ctrl - down  : yabai -m window --resize top:0:60
 
 # open common applications
 cmd + ctrl - a : osascript -e "tell application \"Safari\"" -e "make new document at end" -e "activate" -e "end tell"
+# cmd + ctrl + shift - a : osascript -e "tell application \"Arc\"" -e "make new window at end" -e "activate" -e "end tell"
 cmd + ctrl - z : osascript -e "tell application \"iTerm2\"" -e "set newWindow to (create window with default profile)" -e "end tell"
