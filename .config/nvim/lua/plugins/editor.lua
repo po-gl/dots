@@ -15,6 +15,9 @@ return {
   -- expand regions + to expand, _ to shrink
   { 'terryma/vim-expand-region' },
 
+  -- surround
+  { 'tpope/vim-surround' },
+
   -- git wrapper
   { 'tpope/vim-fugitive' },
   { 'airblade/vim-gitgutter' },
