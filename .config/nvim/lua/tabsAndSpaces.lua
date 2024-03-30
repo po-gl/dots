@@ -21,5 +21,6 @@ end
 
 create_tas_autocmd('lua', 2, 2, 2)
 create_tas_autocmd('c', 2, 2, 2)
+create_tas_autocmd('cpp', 2, 2, 2)
 create_tas_autocmd('html', 2, 2, 2)
 create_tas_autocmd('python', 4, 4, 4)
