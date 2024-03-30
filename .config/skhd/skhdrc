@@ -111,9 +111,6 @@ cmd + ctrl - j : yabai -m window --focus south
 cmd + ctrl - k : yabai -m window --focus north
 cmd + ctrl - l : yabai -m window --focus east
 
-# back_and_forth between spaces (0x29=;)
-cmd + ctrl - 0x29 : yabai -m space --focus recent
-
 # toggle fullscreen
 cmd + ctrl - f : yabai -m window --toggle zoom-fullscreen
 cmd + ctrl + shift - f : yabai -m window --toggle native-fullscreen
@@ -129,26 +126,30 @@ cmd + ctrl - m : yabai -m space --rotate 180
 # close focused window
 cmd + ctrl - w : yabai -m window --close
 
+# back_and_forth between spaces (0x29=;)
+cmd + ctrl - 0x29 : yabai -m space --focus recent
+
 # focus on spaces
-cmd + ctrl - y : yabai -m space --focus 1
-cmd + ctrl - u : yabai -m space --focus 2
-cmd + ctrl - i : yabai -m space --focus 3
-cmd + ctrl - o : yabai -m space --focus 4
-cmd + ctrl - p : yabai -m space --focus 5
-cmd + ctrl - 0x21 : yabai -m space --focus 6
-cmd + ctrl - 0x1E : yabai -m space --focus 7
+cmd + ctrl - y : yabai -m space --focus $($HOME/.config/yabai/spacefordisplays.sh 1)
+cmd + ctrl - u : yabai -m space --focus $($HOME/.config/yabai/spacefordisplays.sh 2)
+cmd + ctrl - i : yabai -m space --focus $($HOME/.config/yabai/spacefordisplays.sh 3)
+cmd + ctrl - o : yabai -m space --focus $($HOME/.config/yabai/spacefordisplays.sh 4)
+cmd + ctrl - p : yabai -m space --focus $($HOME/.config/yabai/spacefordisplays.sh 5)
+cmd + ctrl - 0x21 : yabai -m space --focus $($HOME/.config/yabai/spacefordisplays.sh 6)
+cmd + ctrl - 0x1E : yabai -m space --focus $($HOME/.config/yabai/spacefordisplays.sh 7)
+
+# move windows to spaces
+cmd + alt + ctrl - y : yabai -m window --space 1
+cmd + alt + ctrl - u : yabai -m window --space 2
+cmd + alt + ctrl - i : yabai -m window --space 3
+cmd + alt + ctrl - o : yabai -m window --space 4
+cmd + alt + ctrl - p : yabai -m window --space 5
+cmd + alt + ctrl - 0x21 : yabai -m window --space 6
+cmd + alt + ctrl - 0x1E : yabai -m window --space 7
 
 # create and destroy spaces
 cmd + ctrl - c : yabai -m space --create
 cmd + ctrl - x : yabai -m space --destroy
-
-# move windows to spaces
-cmd + ctrl - 1 : yabai -m window --space 1
-cmd + ctrl - 2 : yabai -m window --space 2
-cmd + ctrl - 3 : yabai -m window --space 3
-cmd + ctrl - 4 : yabai -m window --space 4
-cmd + ctrl - 5 : yabai -m window --space 5
-cmd + ctrl - 6 : yabai -m window --space 6
 
 # swap windows in current workspace
 cmd + alt + ctrl - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
@@ -161,6 +162,10 @@ cmd + ctrl - left  : yabai -m window --resize left:-60:0
 cmd + ctrl - right : yabai -m window --resize left:60:0
 cmd + ctrl - up    : yabai -m window --resize top:0:-60
 cmd + ctrl - down  : yabai -m window --resize top:0:60
+
+# toggle gaps per space to break things up visually
+# not sure how much I'll use this
+cmd + ctrl - g : yabai -m space --gap abs:10; yabai -m space --toggle gap
 
 # open common applications
 cmd + ctrl - a : osascript -e "tell application \"Safari\"" -e "make new document at end" -e "activate" -e "end tell"
