@@ -64,11 +64,13 @@ alias pgcopy="tr -d '\n' | pbcopy"
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 alias brew="/opt/homebrew/bin/brew"
 
-alias brew-update="brew update; brew upgrade; ibrew update; ibrew upgrade"
+alias brew-update="brew update && brew upgrade && ibrew update && ibrew upgrade"
 
 alias wm-start="yabai --start-service && skhd --start-service"
 alias wm-stop="yabai --stop-service && skhd --stop-service"
 alias wm-restart="yabai --restart-service && skhd --restart-service"
+
+alias latexmk-lua="latexmk -lualatex -pvc -interaction=nonstopmode"
 
 # PG Show/Hide files in finder TODO: These should be functions
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
@@ -126,9 +128,9 @@ export GPG_TTY=$(tty)
 
 # fzf settings and keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_DEFAULT_COMMAND="fd . $HOME -E DevArchive"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME -E DevArchive"
 
 # Insert last argument 
 vi-yank-arg() {
