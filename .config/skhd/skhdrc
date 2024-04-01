@@ -141,13 +141,13 @@ cmd + ctrl - 0x21 : yabai -m space --focus $($HOME/.config/yabai/spacefordisplay
 cmd + ctrl - 0x1E : yabai -m space --focus $($HOME/.config/yabai/spacefordisplays.sh 7)
 
 # move windows to spaces
-cmd + alt + ctrl - y : yabai -m window --space 1
-cmd + alt + ctrl - u : yabai -m window --space 2
-cmd + alt + ctrl - i : yabai -m window --space 3
-cmd + alt + ctrl - o : yabai -m window --space 4
-cmd + alt + ctrl - p : yabai -m window --space 5
-cmd + alt + ctrl - 0x21 : yabai -m window --space 6
-cmd + alt + ctrl - 0x1E : yabai -m window --space 7
+cmd + alt + ctrl - y : yabai -m window --space $($HOME/.config/yabai/spacefordisplays.sh 1)
+cmd + alt + ctrl - u : yabai -m window --space $($HOME/.config/yabai/spacefordisplays.sh 2)
+cmd + alt + ctrl - i : yabai -m window --space $($HOME/.config/yabai/spacefordisplays.sh 3)
+cmd + alt + ctrl - o : yabai -m window --space $($HOME/.config/yabai/spacefordisplays.sh 4)
+cmd + alt + ctrl - p : yabai -m window --space $($HOME/.config/yabai/spacefordisplays.sh 5)
+cmd + alt + ctrl - 0x21 : yabai -m window --space $($HOME/.config/yabai/spacefordisplays.sh 6)
+cmd + alt + ctrl - 0x1E : yabai -m window --space $($HOME/.config/yabai/spacefordisplays.sh 7)
 
 # create and destroy spaces
 cmd + ctrl - c : yabai -m space --create
