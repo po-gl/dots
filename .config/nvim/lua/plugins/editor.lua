@@ -6,7 +6,7 @@ return {
   },
 
   -- assistant
-  { 'Exafunction/codeium.vim', enabled = true, },
+  { 'Exafunction/codeium.vim', enabled = false, },
   { 'github/copilot.vim', enabled = false, },
 
   -- commenter
@@ -14,6 +14,13 @@ return {
 
   -- expand regions + to expand, _ to shrink
   { 'terryma/vim-expand-region' },
+
+  -- auto-pairs
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true
+  },
 
   -- surround
   { 'tpope/vim-surround' },
@@ -57,6 +64,8 @@ return {
 
   -- testing
   { 'vim-test/vim-test' },
+
+  -- { 'cdelledonne/vim-cmake' },
 
   -- file exploring
   {
@@ -128,4 +137,9 @@ return {
       require('neoscroll.config').set_mappings(t)
     end,
   },
+
+  -- pico 8 support
+  {
+    'bakudankun/pico-8.vim'
+  }
 }

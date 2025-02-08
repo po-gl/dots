@@ -55,10 +55,10 @@ export CLICOLOR=1
 # PG encrypt/decrypt with aes-256-cbc
 # Note that zip -e another way to encrypt
 function encrypt() {
-  openssl aes-256-cbc -in $1 -out $2
+  openssl aes-256-cbc -md md5 -in $1 -out $2 
 }
 function decrypt() {
-  openssl aes-256-cbc -d -in $1 -out $2
+  openssl aes-256-cbc -d -md md5 -in $1 -out $2
 }
 
 # }}}

@@ -35,17 +35,13 @@ IINA.app
 Imaging Edge
 Imaging Edge Desktop.app
 Inkscape.app
-IntelliJ IDEA CE.app
 JetBrains Toolbox.app
 Kap.app
 Keynote.app
 LTspice.app
 Magnet.app
-Microsoft Excel.app
 Microsoft OneNote.app
-Microsoft PowerPoint.app
 Microsoft Remote Desktop.app
-Microsoft Word.app
 MultiMC.app
 Noir.app
 Nova.app
@@ -56,7 +52,6 @@ OpenEmu.app
 PICO-8.app
 Pages.app
 Parallels Desktop.app
-Prime Video.app
 R.app
 RocketSim.app
 SF Symbols.app
@@ -76,13 +71,15 @@ Unity
 Unity Hub.app
 Utilities
 Vimlike.app
-Visual Studio Code - Insiders.app
 Visual Studio Code.app
+Webex.app
+WhichSpace.app
 Wipr.app
 Wireshark.app
-Xcode.app
+Xcode-beta.app
 Zed.app
 balenaEtcher.app
 iTerm.app
 logioptionsplus.app
+love.app
 zoom.us.app

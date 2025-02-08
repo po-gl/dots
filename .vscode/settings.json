@@ -1,4 +1,55 @@
 {
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "e",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "\\",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prevInFiles"
+            ],
+            "silent": true
+        },
+    ],
     // Colors:
     "editor.tokenColorCustomizations": {
         "[DuoTone Dark Sea]": {
@@ -38,9 +89,6 @@
             "tab.inactiveBackground": "#1D2021",
             "editorGroupHeader.tabsBackground": "#1D2021"
         },
-        "[Braver's Solarized Light (themed workbench)]": {
-            "editorIndentGuide.activeBackground": "#BFB9A7"
-        },
         "[Darktooth]": {
             "statusBar.background": "#4D8080",
             "statusBar.noFolderBackground": "#528464",
@@ -64,7 +112,9 @@
         "peekView.border": "#c38f2e",
         "statusBar.background": "#2b7275",
         "statusBar.noFolderBackground": "#2b7275",
-        "statusBar.debuggingBackground": "#2b7275"
+        "statusBar.debuggingBackground": "#2b7275",
+        "statusBar.foreground": "#ffffff",
+        "statusBar.debuggingForeground": "#ffffff"
     },
     "files.autoSave": "onFocusChange",
     "workbench.startupEditor": "newUntitledFile",
@@ -75,7 +125,6 @@
     "explorer.confirmDragAndDrop": false,
     "workbench.editor.tabCloseButton": "left",
     "workbench.sideBar.location": "right",
-    "javascript.implicitProjectConfig.checkJs": true,
     "[javascriptreact]": {},
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
@@ -104,8 +153,7 @@
         "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
     },
-    "workbench.iconTheme": "eq-material-theme-icons-darker",
-    "python.linting.enabled": false,
+    "python.linting.enabled": true,
     "pasteImage.path": "${currentFileDir}/.images",
     "editor.tabCompletion": "on",
     "gitlens.views.repositories.files.layout": "tree",
@@ -175,7 +223,7 @@
         "editor.suggest.snippetsPreventQuickSuggestions": false,
         "editor.suggestSelection": "first",
         "editor.tabCompletion": "onlySnippets",
-        "editor.wordBasedSuggestions": false
+        "editor.wordBasedSuggestions": "off"
     },
     "cmake.configureOnOpen": true,
     "editor.inlineSuggest.enabled": true,
@@ -185,7 +233,7 @@
         "editor.defaultFormatter": "rust-lang.rust-analyzer",
     },
     "window.titleBarStyle": "custom",
-    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "terminal.external.osxExec": "iTerm2.app",
     "editor.minimap.enabled": false,
     "vim.history": 200,
@@ -211,4 +259,10 @@
         "nodrag"
     ],
     "window.zoomLevel": 1,
+    "workbench.editor.tabActionLocation": "left",
+    "git.openRepositoryInParentFolders": "never",
+    "security.promptForLocalFileProtocolHandling": false,
+    "lldb.library": "/Applications/Xcode-beta.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+    "lldb.launch.expressions": "native",
+    "lldb.suppressUpdateNotifications": true,
 }

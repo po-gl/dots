@@ -52,7 +52,10 @@ vim.o.lazyredraw = true
 vim.o.clipboard = 'unnamedplus'
 
 -- codeium
--- vim.g.codeium_enabled = 'v:false'
+vim.g.codeium_enabled = 'v:false'
 vim.g.codeium_tab_fallback = '\t'
-vim.keymap.set('i', '<tab>', 'codeium#Accept()', { silent = true, expr = true })
+-- vim.keymap.set('i', '<tab>', 'codeium#Accept()', { silent = true, expr = true }) -- TODO check if codeium is enabled first
 
+-- vim-tests
+vim.g["test#cpp#catch2#make_command"] = "make -j $(sysctl -n hw.physicalcpu)"
+vim.g["test#cpp#catch2#file_pattern"] = "\\v[tT]est[s].*(\\.cpp)$"

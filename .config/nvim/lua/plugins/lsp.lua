@@ -2,6 +2,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -26,12 +27,14 @@ return {
   -- a package manager for lsp servers, dap servers, linters, and formatters
   {
     'williamboman/mason.nvim',
+    lazy = true,
     config = function()
       require("mason").setup()
     end,
   },
   {
     'williamboman/mason-lspconfig.nvim',
+    lazy = true,
     opts = {
       -- Available LSP servers https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
       ensure_installed = {
@@ -41,6 +44,8 @@ return {
         'gopls',
         'clangd',
         'cmake',
+        -- 'csharp_ls',
+        'omnisharp',
         'tsserver',
         'eslint',
         'jdtls', -- java
@@ -50,18 +55,19 @@ return {
         'cssls',
         'jsonls',
         'yamlls',
-        'taplo', -- TOML
+        'taplo',   -- TOML
         'lemminx', -- XML
         'dockerls',
         'graphql',
         'docker_compose_language_service',
-        'gleam',
+        -- 'gleam',
         -- 'ltex',
         'marksman',
         -- 'nil_ls', -- Nix
         -- 'spectral', -- OpenAPI
-        'ruby_ls',
+        -- 'ruby_ls',
         'sqlls',
+        'pico8_ls',
       },
       handlers = {
         function(server)
@@ -83,6 +89,44 @@ return {
             },
             root_dir = nvim_lsp.util.root_pattern("go.mod", ".git"),
             single_file_support = false,
+          })
+        end,
+        ['clangd'] = function()
+          local nvim_lsp = require('lspconfig')
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
+          nvim_lsp.clangd.setup({
+            capabilities = capabilities,
+            cmd = {
+              'clangd',
+              '-j=8',
+              '--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
+              '--clang-tidy',
+              '--clang-tidy-checks=*',
+              '--all-scopes-completion',
+              '--cross-file-rename',
+              '--completion-style=detailed',
+              '--header-insertion-decorators',
+              '--header-insertion=iwyu',
+              '--pch-storage=memory',
+            },
+          })
+        end,
+        ['omnisharp'] = function()
+          local nvim_lsp = require('lspconfig')
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
+          local omnisharp_bin = vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll"
+          nvim_lsp.omnisharp.setup({
+            capabilities = capabilities,
+            -- cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+            cmd = { "dotnet", omnisharp_bin },
+            enable_import_completion = true,
+            organize_imports_on_format = true,
+            enable_roslyn_analyzers = true,
+            root_dir = function(fname)
+              local solution = nvim_lsp.util.root_pattern("*.sln")(fname)
+              local project = nvim_lsp.util.root_pattern("*.csproj")(fname)
+              return solution or project
+            end,
           })
         end,
         ['lua_ls'] = function()
@@ -109,9 +153,12 @@ return {
       'hrsh7th/cmp-path',
       'L3MON4D3/LuaSnip',
     },
+    lazy = true,
     config = function()
       local cmp = require('cmp')
+      local compare = cmp.config.compare
       local luasnip = require('luasnip')
+      require('luasnip.loaders.from_vscode').load({ paths = { './snippets' } })
 
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -120,6 +167,7 @@ return {
       end
 
       cmp.setup({
+        preselect = cmp.PreselectMode.None,
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
@@ -132,7 +180,7 @@ return {
           ["<c-n>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
-              -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
+              -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
               -- that way you will only jump inside the snippet region
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
@@ -160,7 +208,25 @@ return {
         },
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
+          { name = 'nvim_lsp_signature_help' },
+          { name = 'luasnip',                priority = 10 },
+        }, {
+          { name = 'buffer', keyword_length = 4 },
         }),
+        sorting = {
+          priority_weight = 1.0,
+          comparators = {
+            compare.locality,
+            compare.recently_used,
+            compare.score,
+            compare.offset,
+            compare.order,
+            -- compare.exact,
+            -- compare.sort_text,
+            -- compare.kind,
+            -- compare.length,
+          },
+        },
       })
     end,
   },
@@ -168,5 +234,27 @@ return {
   -- snippets
   {
     'L3MON4D3/LuaSnip',
+    lazy = true,
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+      "saadparwaiz1/cmp_luasnip"
+    },
+  },
+
+  -- symbol outline
+  {
+    "hedyhli/outline.nvim",
+    config = function()
+      require("outline").setup()
+    end,
+  },
+
+  -- extra highlighting
+  {
+    "tikhomirov/vim-glsl"
+  },
+
+  {
+    "neovimhaskell/haskell-vim"
   },
 }

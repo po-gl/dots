@@ -19,12 +19,16 @@ vim.keymap.set('n', '<c-k>', '<c-w>k')
 vim.keymap.set('n', '<c-h>', '<c-w>h')
 vim.keymap.set('n', '<c-l>', '<c-w>l')
 
--- move tabs
-vim.keymap.set('n', '<a-left>', '<cmd>-tabmove<cr>')
-vim.keymap.set('n', '<a-right>', '<cmd>+tabmove<cr>')
+-- jump to last buffer
+vim.keymap.set('n', '<c-p>', '')
+
+-- tabs
+vim.keymap.set('n', '<a-left>', '<cmd>tabprevious<cr>')
+vim.keymap.set('n', '<a-right>', '<cmd>tabnext<cr>')
 
 -- split to new tab
 vim.keymap.set('n', '<C-w>t', '<cmd>tab split<cr>')
+-- <C-w>v should be vsplit tab
 
 -- expand regions
 -- default keybindings are + to expand, _ to shrink
@@ -50,14 +54,14 @@ vim.keymap.set('n', '[h', '<cmd>GitGutterPrevHunk<cr>')
 
 -- refactoring
 -- set as lazy-load key mapping
--- vim.keymap.set({'n', 'x'}, '<leader>re', ':Refactor extract<space>')
--- vim.keymap.set({'n', 'x'}, '<leader>rf', ':Refactor extract_to_file<space>')
--- vim.keymap.set({'n', 'x'}, '<leader>rv', ':Refactor extract_var<space>')
--- vim.keymap.set('n', '<leader>ri', ':Refactor inline_var<space>')
--- vim.keymap.set('n', '<leader>rI', ':Refactor inline_func<space>')
--- vim.keymap.set('n', '<leader>rb', ':Refactor extract_block<space>')
--- vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file<space>')
--- vim.keymap.set({'n', 'x'}, '<leader>rr', function() require('telescope').extensions.refactoring.refactors() end)
+vim.keymap.set({'n', 'x'}, '<leader>re', ':Refactor extract<space>')
+vim.keymap.set({'n', 'x'}, '<leader>rf', ':Refactor extract_to_file<space>')
+vim.keymap.set({'n', 'x'}, '<leader>rv', ':Refactor extract_var<space>')
+vim.keymap.set('n', '<leader>ri', ':Refactor inline_var<space>')
+vim.keymap.set('n', '<leader>rI', ':Refactor inline_func<space>')
+vim.keymap.set('n', '<leader>rb', ':Refactor extract_block<space>')
+vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file<space>')
+vim.keymap.set({'n', 'x'}, '<leader>rr', function() require('telescope').extensions.refactoring.refactors() end)
 
 -- testing
 vim.keymap.set('n', '<leader>t', '<cmd>TestNearest<cr>', { silent = true })
@@ -90,4 +94,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({'n', 'x'}, '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end,
 })
+
+-- symbol outline
+vim.keymap.set('n', '<leader>o', '<cmd>Outline<cr>')
 

@@ -23,7 +23,17 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# Haskell paths
+export PATH="$PATH:$HOME/.ghcup/bin"
+export PATH="$PATH:$HOME/.cabal/bin"
+
+export DOTNET_ROOT="/usr/local/share/dotnet"
+export PATH="$PATH:$HOME/.dotnet"
+export PATH="$PATH:/Users/porter/.dotnet/tools"
+
 export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
+
+export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 
 export EDITOR=nvim
 
@@ -72,6 +82,8 @@ alias wm-restart="yabai --restart-service && skhd --restart-service"
 
 alias latexmk-lua="latexmk -lualatex -pvc -interaction=nonstopmode"
 
+alias cmake-brew="/opt/homebrew/Cellar/cmake/3.29.0/bin/cmake"
+
 # PG Show/Hide files in finder TODO: These should be functions
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -96,10 +108,10 @@ alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 # PG encrypt/decrypt with aes-256-cbc
 # Note that zip -e another way to encrypt
 function encrypt() {
-  openssl aes-256-cbc -in $1 -out $2
+  openssl aes-256-cbc -md md5 -in $1 -out $2
 }
 function decrypt() {
-  openssl aes-256-cbc -d -in $1 -out $2
+  openssl aes-256-cbc -d -md md5 -in $1 -out $2
 }
 
 # File search functions
