@@ -5,6 +5,7 @@ return {
     priority = 1000,
     config = function()
       vim.g.gruvbox_baby_keyword_style = "italic"
+      vim.g.gruvbox_baby_background_color = "dark"
       vim.cmd.colorscheme("gruvbox-baby")
     end,
   },

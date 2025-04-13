@@ -1,14 +1,13 @@
-AI Enlarger.app
 Adobe After Effects 2023
 Adobe Creative Cloud
 Adobe Media Encoder 2023
 Affinity Designer.app
+AI Enlarger.app
 Android File Transfer.app
 Android Studio.app
-Apollo.app
-Arc.app
 ArmGNUToolchain
 Aseprite.app
+balenaEtcher.app
 Blackmagic Disk Speed Test.app
 Blender.app
 Boris Continuum OFX HitFilm 2021.5
@@ -35,13 +34,15 @@ IINA.app
 Imaging Edge
 Imaging Edge Desktop.app
 Inkscape.app
+iTerm.app
 JetBrains Toolbox.app
 Kap.app
 Keynote.app
+logioptionsplus.app
+love.app
 LTspice.app
 Magnet.app
 Microsoft OneNote.app
-Microsoft Remote Desktop.app
 MultiMC.app
 Noir.app
 Nova.app
@@ -49,13 +50,13 @@ Numbers.app
 Numi.app
 OBS.app
 OpenEmu.app
-PICO-8.app
 Pages.app
 Parallels Desktop.app
+PICO-8.app
 R.app
 RocketSim.app
-SF Symbols.app
 Safari.app
+SF Symbols.app
 Skim.app
 Slack.app
 Spotify.app
@@ -72,14 +73,10 @@ Unity Hub.app
 Utilities
 Vimlike.app
 Visual Studio Code.app
-Webex.app
 WhichSpace.app
+Windows App.app
 Wipr.app
 Wireshark.app
-Xcode-beta.app
+Xcode.app
 Zed.app
-balenaEtcher.app
-iTerm.app
-logioptionsplus.app
-love.app
 zoom.us.app

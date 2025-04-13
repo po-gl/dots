@@ -9,6 +9,7 @@ return {
       'hrsh7th/nvim-cmp',
     },
     config = function()
+      local lspconfig = require('lspconfig')
       vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
         vim.lsp.handlers.hover,
         {
@@ -21,6 +22,17 @@ return {
           virtual_text = true,
         }
       )
+
+      -- Swift's SourceKit-LSP is installed with the swift toolchain (not mason)
+      lspconfig.sourcekit.setup {
+        capabilities = {
+          workspace = {
+            didChangeWatchedFiles = {
+              dynamicRegistration = true,
+            }
+          }
+        }
+      }
     end,
   },
 

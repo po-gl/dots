@@ -64,6 +64,8 @@ alias vi='nvim'
 alias tmux='/opt/homebrew/bin/tmux'
 alias zshconfig="vi ~/.zshrc"
 
+alias vinote='nvim ~/.notes/temp.md'
+
 alias cl='clear'
 
 alias python='python3'
