@@ -140,7 +140,7 @@
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
     },
-    "editor.renderWhitespace": "all",
+    "editor.renderWhitespace": "none",
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.advanced.messages": {
@@ -173,7 +173,10 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "editor.rulers": [],
+    "editor.rulers": [
+        80,
+        120
+    ],
     "vim.showMarksInGutter": true,
     "vim.statusBarColorControl": true,
     "vim.statusBarColors.insert": "#ab5781",
@@ -252,7 +255,8 @@
     "workbench.tree.renderIndentGuides": "always",
     "[javascript]": {
         "editor.tabSize": 2,
-        "editor.maxTokenizationLineLength": 2500
+        "editor.maxTokenizationLineLength": 2500,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.tabSize": 2,
     "cSpell.ignoreWords": [
@@ -265,4 +269,13 @@
     "lldb.library": "/Applications/Xcode-beta.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
     "lldb.launch.expressions": "native",
     "lldb.suppressUpdateNotifications": true,
+    "update.showReleaseNotes": false,
+    "editor.lineNumbers": "relative",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "javascript": false
+    },
 }

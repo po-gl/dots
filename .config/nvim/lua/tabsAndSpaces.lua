@@ -18,12 +18,14 @@ function create_tas_autocmd (pattern, tabstop, softtabstop, shiftwidth)
     end,
   })
 end
+create_tas_autocmd('python', 4, 4, 4)
+create_tas_autocmd('css', 4, 4, 4)
 
 create_tas_autocmd('lua', 2, 2, 2)
 create_tas_autocmd('c', 2, 2, 2)
 create_tas_autocmd('cpp', 2, 2, 2)
 create_tas_autocmd('html', 2, 2, 2)
-create_tas_autocmd('css', 4, 4, 4)
 create_tas_autocmd('javascript', 2, 2, 2)
 create_tas_autocmd('typescript', 2, 2, 2)
-create_tas_autocmd('python', 4, 4, 4)
+create_tas_autocmd('json', 2, 2, 2)
+create_tas_autocmd('sshconfig', 2, 2, 2)

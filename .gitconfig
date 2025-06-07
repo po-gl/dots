@@ -12,6 +12,7 @@
 [alias]
 	dt = difftool
 	lg = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset'
+    lgh = !git lg | head
   s = status
 [merge]
 	tool = vimdiff

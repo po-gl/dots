@@ -68,6 +68,8 @@ alias vinote='nvim ~/.notes/temp.md'
 
 alias cl='clear'
 
+alias lsa='eza'
+
 alias python='python3'
 alias pip='pip3'
 
@@ -121,7 +123,7 @@ function f() { find . -iname "*$1*" ${@:2} }
 function r() { grep "$1" ${@:2} -R . }
 
 # }}}
-# Plugins {{{
+# Zsh Plugins {{{
 plugins=(
   git
   docker
