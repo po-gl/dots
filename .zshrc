@@ -68,8 +68,6 @@ alias vinote='nvim ~/.notes/temp.md'
 
 alias cl='clear'
 
-alias lsa='eza'
-
 alias python='python3'
 alias pip='pip3'
 
@@ -122,14 +120,40 @@ function decrypt() {
 function f() { find . -iname "*$1*" ${@:2} }
 function r() { grep "$1" ${@:2} -R . }
 
+# Change MacOS settings for desktop setup
+function desktop() {
+  # scroll direction via com.apple.swipescrolldirection doesn't seem
+  # to work anymore... just using logi options for now
+  defaults write com.apple.dock autohide -bool false && killall Dock
+}
+
+function laptop() {
+  defaults write com.apple.dock autohide -bool true && killall Dock
+}
+
 # }}}
 # Zsh Plugins {{{
 plugins=(
   git
+  brew
   docker
+  golang
+  rust
+  swiftpm
   npm
+  pip
+  helm
   vi-mode
   zsh-autosuggestions
+  colored-man-pages
+  dotenv
+  isodate
+  ssh
+  tmux
+  eza
+  iterm2
+  macos # quick-look is pretty cool, also man-preview
+  xcode
 )
 # }}}
 # General {{{
@@ -158,6 +182,7 @@ bindkey -M vicmd _ vi-yank-arg
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+eval "$(zoxide init zsh)"
 
 # }}}
 # Oh My ZSH {{{
@@ -263,7 +288,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # }}}
-# UI {{{
+# Prompt {{{
 
 # Right side of prompt
 # + VI mode indicator

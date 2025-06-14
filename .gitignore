@@ -22,3 +22,5 @@
 .vscode/extensions/**
 
 .tmux/**
+
+*.log
