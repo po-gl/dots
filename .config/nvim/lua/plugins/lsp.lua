@@ -58,7 +58,7 @@ return {
         'cmake',
         -- 'csharp_ls',
         'omnisharp',
-        'tsserver',
+        -- 'tsserver',
         'eslint',
         'jdtls', -- java
         'bashls',

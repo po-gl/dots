@@ -16,7 +16,8 @@ gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker g
 
 # Installation rules
 install-brew-bundle:
-	brew bundle --file=Brewfile -v
+	/usr/local/bin/brew bundle --file=iBrewfile -v
+	/opt/homebrew/bin/brew bundle --file=Brewfile -v
 
 install-vundle:
 	if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim; fi;
@@ -80,7 +81,8 @@ copy-latexmk:
 
 # Gather rules
 get-brew-bundle:
-	brew bundle dump --force
+	/usr/local/bin/brew bundle dump --force --file=iBrewfile
+	/opt/homebrew/bin/brew bundle dump --force --file=Brewfile
 
 get-mac-apps:
 	ls /Applications/ > ./MacOS_apps_list.txt
