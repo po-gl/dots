@@ -6,6 +6,7 @@ return {
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       'hrsh7th/nvim-cmp',
     },
     config = function()
@@ -35,6 +36,70 @@ return {
       }
     end,
   },
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    lazy = true,
+    opts = {
+      auto_update = false,
+      run_on_start = true,
+      ensure_installed = {
+        -- LSPs
+        'lua_ls',
+        'basedpyright',
+        'ruff', -- python linter and formatter
+        'rust_analyzer',
+        'gopls',
+        'clangd',
+        'zls', -- zig
+        'cmake',
+        -- 'csharp_ls',
+        'omnisharp',
+        -- 'tsserver',
+        'jdtls', -- java
+        'bashls',
+        'html',
+        'emmet_ls',
+        'eslint-lsp', -- javascript, typescript
+        'cssls',
+        'jsonls',
+        'yamlls',
+        'taplo',   -- TOML
+        'lemminx', -- XML
+        'dockerls',
+        'docker-compose-language-service',
+        'graphql-language-service-cli',
+        -- 'gleam',
+        -- 'ltex',
+        'marksman',
+        -- 'grammarly-languageserver', -- wild
+        -- 'nil_ls', -- Nix
+        -- 'spectral', -- OpenAPI
+        -- 'ruby_ls',
+        'sqlls',
+        'pico8_ls',
+
+        -- linters
+        -- 'pylint', -- (using ruff)
+        -- 'es_lintd', -- javascript, typescript (using lsp)
+        'swiftlint',
+        -- 'bacon', -- rust (using lsp)
+        'shellcheck',           -- bash
+        'editorconfig-checker', -- this might get annoying
+        -- 'sonarlint-language-server', -- sonarqube?
+        'textlint',             -- text and markdown
+        'typos',                -- general code spellchecker
+        'kube-linter',
+
+        -- formatters
+        'black',     -- Python lsp
+        'prettierd', -- javascript, html, css, json, etc.
+        'clang-format',
+        'gofumpt',
+        'taplo',
+        'yamlfix',
+      },
+    },
+  },
 
   -- a package manager for lsp servers, dap servers, linters, and formatters
   {
@@ -48,39 +113,6 @@ return {
     'williamboman/mason-lspconfig.nvim',
     lazy = true,
     opts = {
-      -- Available LSP servers https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
-      ensure_installed = {
-        'lua_ls',
-        'pyright',
-        'rust_analyzer',
-        'gopls',
-        'clangd',
-        'cmake',
-        -- 'csharp_ls',
-        'omnisharp',
-        -- 'tsserver',
-        'eslint',
-        'jdtls', -- java
-        'bashls',
-        'html',
-        'emmet_ls',
-        'cssls',
-        'jsonls',
-        'yamlls',
-        'taplo',   -- TOML
-        'lemminx', -- XML
-        'dockerls',
-        'graphql',
-        'docker_compose_language_service',
-        -- 'gleam',
-        -- 'ltex',
-        'marksman',
-        -- 'nil_ls', -- Nix
-        -- 'spectral', -- OpenAPI
-        -- 'ruby_ls',
-        'sqlls',
-        'pico8_ls',
-      },
       handlers = {
         function(server)
           require('lspconfig')[server].setup({

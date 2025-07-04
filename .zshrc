@@ -48,25 +48,31 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export BAT_THEME=gruvbox-dark
+
 # PG Set music alarm environment variable
 export MUSIC_ALARM='/Users/porter/Music/Intervals/Libra.mp3'
 
 export PS4='+xtrace $LINENO:'
 
-
 source $HOME/.zshrc.secrets
-
 
 # }}}
 # Aliases {{{
 
 alias vi='nvim'
-alias tmux='/opt/homebrew/bin/tmux'
-alias zshconfig="vi ~/.zshrc"
+alias tmux='/opt/homebrew/bin/tmux -u'
+alias zshvi='vi ~/.zshrc'
+alias zshsource='source ~/.zshrc'
 
 alias vinote='nvim ~/.notes/temp.md'
 
+alias ls='eza'
 alias cl='clear'
+alias rgf='rg --files | rg'
+alias rgd='rg --files --null | xargs -0 dirname | uniq | rg'
+alias bat='batcat'
+alias less='less -i'
 
 alias python='python3'
 alias pip='pip3'
@@ -156,6 +162,7 @@ plugins=(
   iterm2
   macos # quick-look is pretty cool, also man-preview
   xcode
+  zsh-syntax-highlighting
 )
 # }}}
 # General {{{
@@ -170,9 +177,9 @@ export GPG_TTY=$(tty)
 
 # fzf settings and keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="fd . $HOME -E DevArchive"
+export FZF_DEFAULT_COMMAND="fd -t f -E DevArchive"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME -E DevArchive"
+export FZF_ALT_C_COMMAND="fd -t d . -E DevArchive"
 
 # Insert last argument 
 vi-yank-arg() {
@@ -193,6 +200,7 @@ eval "$(zoxide init zsh)"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/porter/.oh-my-zsh"
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -288,6 +296,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Tab completion colors
+LS_COLORS=${(*)LS_COLORS/ow=[^:]#/ow=48;5;4;38;5;0} # need to replace existing entry
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # }}}
 # Prompt {{{

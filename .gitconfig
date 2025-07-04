@@ -1,19 +1,30 @@
 [user]
 	email = porterglines@gmail.com
 	name = po-gl
-  signingkey = 6398A605AFDB8212
+    signingkey = 6398A605AFDB8212
 [commit]
-  gpgsign = false
+    gpgsign = false
+[core]
+    autocrlf = input
+    whitespace = -cr-at-eol
+    pager = delta
+[blame]
+    coloring = highlightRecent
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    syntax-theme = gruvbox-dark
+    navigate = true
 [diff]
 	tool = vimdiff
 [difftool]
 	prompt = false
-  trustExitCode = true # be able to abort diffs with :cq or :cquit
+    trustExitCode = true # be able to abort diffs with :cq or :cquit
 [alias]
 	dt = difftool
 	lg = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset'
     lgh = !git lg | head
-  s = status
+    s = status
 [merge]
 	tool = vimdiff
 [filter "lfs"]
@@ -22,7 +33,7 @@
 	process = git-lfs filter-process
 	required = true
 [color]
-  ui = true
+    ui = true
 [init]
 	defaultBranch = main
 [http]
