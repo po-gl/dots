@@ -1,4 +1,5 @@
 {
+    "vim.leader": "\\",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -21,11 +22,43 @@
         },
         {
             "before": [
-                "\\",
+                "<leader>",
                 "f"
             ],
             "commands": [
                 "editor.action.formatDocument"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "g"
+            ],
+            "commands": [
+                "workbench.action.quickTextSearch"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "?"
+            ],
+            "commands": [
+                "workbench.action.openDefaultKeybindingsFile"
             ],
             "silent": true
         },
@@ -277,5 +310,17 @@
         "markdown": false,
         "scminput": false,
         "javascript": false
+    },
+    "codeium.enableConfig": {
+        "*": true,
+        "plaintext": true
+    },
+    "haskell.manageHLS": "GHCup",
+    "window.density.editorTabHeight": "compact",
+    "editor.scrollbar.horizontalScrollbarSize": 8,
+    "editor.scrollbar.verticalScrollbarSize": 8,
+    "workbench.sash.size": 6,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
 }

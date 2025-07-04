@@ -134,7 +134,9 @@ function laptop() {
 # }}}
 # Zsh Plugins {{{
 plugins=(
+  fzf
   git
+  vi-mode
   brew
   docker
   golang
@@ -143,10 +145,10 @@ plugins=(
   npm
   pip
   helm
-  vi-mode
   zsh-autosuggestions
   colored-man-pages
   dotenv
+  dotnet
   isodate
   ssh
   tmux
@@ -306,4 +308,4 @@ zle -N zle-keymap-select
 RPROMPT="%{$fg[cyan]%}%@%{$reset_color%}"
 
 # }}}
-# enable folding  vim:foldmethod=marker:foldlevel=0
+# enable folding  vim:foldmethod=marker:foldlevel=1

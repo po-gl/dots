@@ -23,8 +23,10 @@ Dolphin Updater.app
 Dolphin.app
 Enjoyable.app
 Figma.app
+Final Cut Pro.app
 Firefox.app
 Gifski.app
+GIMP.app
 Godot.app
 Google Chrome.app
 Grammarly Desktop.app
@@ -33,6 +35,7 @@ GrandPerspective.app
 IINA.app
 Imaging Edge
 Imaging Edge Desktop.app
+ImHex.app
 Inkscape.app
 iTerm.app
 JetBrains Toolbox.app
@@ -53,6 +56,7 @@ OpenEmu.app
 Pages.app
 Parallels Desktop.app
 PICO-8.app
+QuPath-0.6.0-arm64.app
 R.app
 RocketSim.app
 Safari.app
