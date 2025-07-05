@@ -54,14 +54,14 @@ vim.keymap.set('n', '[h', '<cmd>GitGutterPrevHunk<cr>')
 
 -- refactoring
 -- set as lazy-load key mapping
-vim.keymap.set({'n', 'x'}, '<leader>re', ':Refactor extract<space>')
-vim.keymap.set({'n', 'x'}, '<leader>rf', ':Refactor extract_to_file<space>')
-vim.keymap.set({'n', 'x'}, '<leader>rv', ':Refactor extract_var<space>')
+vim.keymap.set({ 'n', 'x' }, '<leader>re', ':Refactor extract<space>')
+vim.keymap.set({ 'n', 'x' }, '<leader>rf', ':Refactor extract_to_file<space>')
+vim.keymap.set({ 'n', 'x' }, '<leader>rv', ':Refactor extract_var<space>')
 vim.keymap.set('n', '<leader>ri', ':Refactor inline_var<space>')
 vim.keymap.set('n', '<leader>rI', ':Refactor inline_func<space>')
 vim.keymap.set('n', '<leader>rb', ':Refactor extract_block<space>')
 vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file<space>')
-vim.keymap.set({'n', 'x'}, '<leader>rr', function() require('telescope').extensions.refactoring.refactors() end)
+vim.keymap.set({ 'n', 'x' }, '<leader>rr', function() require('telescope').extensions.refactoring.refactors() end)
 
 -- testing
 vim.keymap.set('n', '<leader>t', '<cmd>TestNearest<cr>', { silent = true })
@@ -70,11 +70,26 @@ vim.keymap.set('n', '<leader>ta', '<cmd>TestSuite<cr>', { silent = true })
 vim.keymap.set('n', '<leader>tl', '<cmd>TestLast<cr>', { silent = true })
 vim.keymap.set('n', '<leader>tg', '<cmd>TestVisit<cr>', { silent = true })
 
+-- quick fix
+-- ]q and [q for :cnext and :cprev
+vim.keymap.set('n', '<leader>cq', '<cmd>cclose<cr>')
+vim.keymap.set('n', '<leader>co', '<cmd>copen<cr>')
+
 -- lsp
 -- these settings can be global
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+
+vim.keymap.set('n', '<leader>i', function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)
+
+-- signature overloads (set per lsp in lsp.lua)
+-- <Alt-n> <Alt-p> for next/prev signature
+-- <Alt-.> <Alt-,> for next/prev parameter
+-- <Alt-c> to close completion menu that's probably in the way
+
 
 -- the rest need to be added after the lsp attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -90,11 +105,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
     vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<leader>f=', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    vim.keymap.set({ 'n', 'x' }, '<leader>f=', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    vim.keymap.set({ 'n', 'x' }, '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end,
 })
 
 -- symbol outline
 vim.keymap.set('n', '<leader>o', '<cmd>Outline<cr>')
-

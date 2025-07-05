@@ -25,6 +25,8 @@ return {
         }
       )
 
+      vim.lsp.inlay_hint.enable(true)
+
       -- cross-reference names in
       -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 
@@ -112,6 +114,23 @@ return {
           '/tmp/roslyn_ls/logs',
           '--stdio',
         },
+        on_attach = function(client)
+          if client.server_capabilities.signatureHelpProvider then
+            require('lsp-overloads').setup(client, {
+              ui = {
+                border = 'single'
+              },
+              keymaps = {
+                next_signature = '<A-n>',
+                previous_signature = '<A-p>',
+                next_parameter = '<A-.>',
+                previous_parameter = '<A-,>',
+                close_signature = '<A-s>',
+              },
+            })
+            -- vim.keymap.set({'n', 'i'}, '<A-s>', ':LspOverloadsSignature<CR>', { noremap = true, silent = true, buffer = bufnr })
+          end
+        end,
         settings = {
           ["csharp|background_analysis"] = {
             background_analysis = {
@@ -135,6 +154,7 @@ return {
           },
           ["csharp|code_lens"] = {
             dotnet_enable_references_code_lens = true,
+            dotnet_enable_tests_code_lens = false,
           },
           ["csharp|completion"] = {
             dotnet_show_completion_items_from_unimported_namespaces = true,
@@ -297,12 +317,16 @@ return {
       cmp.setup({
         preselect = cmp.PreselectMode.None,
         window = {
+          -- bordered windows makes windows overlap, be careful
+          -- https://github.com/hrsh7th/nvim-cmp/issues/1812
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
+          -- also see bordered windows of signature overloads plugin
         },
         mapping = cmp.mapping.preset.insert({
           ['<cr>'] = cmp.mapping.confirm({ select = true }),
           ['<c-space>'] = cmp.mapping.complete(),
+          ['<A-c>'] = cmp.mapping.close(),
           ['<c-u>'] = cmp.mapping.scroll_docs(-4),
           ['<c-d>'] = cmp.mapping.scroll_docs(4),
           ['<c-n>'] = cmp.mapping(function(fallback)
@@ -382,6 +406,9 @@ return {
     lazy = true,
     ft = 'glsl',
   },
+
+  -- cycle through overloads with <C-j> <C-k> etc.
+  { 'Issafalcon/lsp-overloads.nvim' },
 
   {
     'neovimhaskell/haskell-vim',

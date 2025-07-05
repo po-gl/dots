@@ -27,6 +27,16 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
   end,
 })
 
+-- roslyn codelens
+-- see :h vim.lsp.codelense.refresh()
+vim.api.nvim_create_autocmd({'BufEnter', 'CursorHold', 'InsertLeave'}, {
+  pattern = { '*{.cs,.fs}' },
+  callback = function()
+    vim.lsp.codelens.refresh({ bufnr = 0 })
+  end,
+})
+
+-- pico-8
 vim.api.nvim_create_autocmd({'BufNew', 'BufEnter'}, {
   pattern = { '*.p8' },
   callback = function(args)
