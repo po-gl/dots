@@ -2,8 +2,11 @@ return {
   -- indent line
   {
     'lukas-reineke/indent-blankline.nvim',
+    enabled = false, -- performance issues
     config = function()
-      require('ibl').setup()
+      require('ibl').setup({
+      indent = { char = '│' },
+      })
     end
   },
 

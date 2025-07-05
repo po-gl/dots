@@ -71,11 +71,8 @@ alias ls='eza'
 alias cl='clear'
 alias rgf='rg --files | rg'
 alias rgd='rg --files --null | xargs -0 dirname | uniq | rg'
-alias bat='batcat'
 alias less='less -i'
-
-alias python='python3'
-alias pip='pip3'
+alias bat='bat'
 
 alias pgcopy="tr -d '\n' | pbcopy"
 
@@ -140,7 +137,6 @@ function laptop() {
 # }}}
 # Zsh Plugins {{{
 plugins=(
-  fzf
   git
   vi-mode
   brew
@@ -163,6 +159,7 @@ plugins=(
   macos # quick-look is pretty cool, also man-preview
   xcode
   zsh-syntax-highlighting
+  fzf
 )
 # }}}
 # General {{{

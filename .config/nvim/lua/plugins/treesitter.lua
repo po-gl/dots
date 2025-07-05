@@ -1,6 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    enabled = true,
     build = ':TSUpdate',
     -- event = 'BufRead',
     lazy = false,
@@ -10,14 +11,16 @@ return {
       highlight = {
         -- too slow for large files, so off by default except for certain languages
         -- that don't have semantic highlighting with their LSPs
-        enable = true,
-        disable = function(lang, _)
-          -- enable all except these languages
-          return lang == 'python'
-        end,
+        -- enable = true,
+        -- disable = function(lang, _)
+        --   -- enable all except these languages
+        --   return lang == 'python'
+        -- end,
         additional_vim_regex_highlighting = false,
       },
       indent = { enable = true },
+      rainbow = { enable = false },
+      playground = { enable = false },
     },
     config = function(_, opts)
       require("nvim-treesitter.install").prefer_git = true

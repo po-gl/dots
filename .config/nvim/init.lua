@@ -16,5 +16,14 @@ require("autocmds")
 require("keymaps")
 require("tabsAndSpaces")
 
-require("lazy").setup("plugins")
-
+-- require("lazy").setup("plugins")
+require("lazy").setup({
+  { import = "plugins" },
+},
+  {
+    check_detection = {
+      enabled = true,
+      notify = false,
+    },
+  }
+)

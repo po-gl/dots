@@ -22,6 +22,9 @@ return {
     config = true
   },
 
+  -- key binding helper
+  { 'folke/which-key.nvim' },
+
   -- surround
   { 'tpope/vim-surround' },
 
@@ -118,10 +121,11 @@ return {
   -- smooth scrolling
   {
     'karb94/neoscroll.nvim',
+    enabled = false,
     config = function()
       local neoscroll = require('neoscroll')
       neoscroll.setup({
-        easing_function = "quadratic"
+        easing_function = "sine"
       })
 
       local keymap = {
@@ -144,6 +148,8 @@ return {
 
   -- pico 8 support
   {
-    'bakudankun/pico-8.vim'
+    'bakudankun/pico-8.vim',
+    lazy = true,
+    ft = 'p8,lua'
   }
 }

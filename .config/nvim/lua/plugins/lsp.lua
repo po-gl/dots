@@ -1,8 +1,9 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    event = { "BufReadPre", "BufNewFile" },
     lazy = true,
+    event = { 'BufReadPre', 'BufNewFile' },
+    after = 'mason-lspconfig.nvim',
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -14,7 +15,7 @@ return {
       vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
         vim.lsp.handlers.hover,
         {
-          border = "rounded",
+          border = 'rounded',
         }
       )
       vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
@@ -24,7 +25,140 @@ return {
         }
       )
 
-      -- Swift's SourceKit-LSP is installed with the swift toolchain (not mason)
+      -- cross-reference names in
+      -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+
+      -- go
+      lspconfig.gopls.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true
+          }
+        },
+        root_dir = lspconfig.util.root_pattern('go.mod', '.git'),
+        single_file_support = false,
+      })
+
+      -- rust
+      lspconfig.rust_analyzer.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- python
+      lspconfig.basedpyright.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- javascript
+      lspconfig.eslint.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- zig
+      lspconfig.zls.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- lua_ls
+      lspconfig.lua_ls.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        root_dir = require('lspconfig.util').root_pattern('.git', '.'),
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
+            },
+          },
+        },
+      })
+
+      -- clangd
+      lspconfig.clangd.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        cmd = {
+          'clangd',
+          '-j=8',
+          '--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
+          '--clang-tidy',
+          '--clang-tidy-checks=*',
+          '--all-scopes-completion',
+          '--cross-file-rename',
+          '--completion-style=detailed',
+          '--header-insertion-decorators',
+          '--header-insertion=iwyu',
+          '--pch-storage=memory',
+        },
+      })
+
+      -- dotnet (csharp)
+      -- using the seblyng/roslyn.nvim plugin
+      -- so... not setting it up through lspconfig, see below
+      -- btw getting the architecture right is critical here, "neutral" wasted a lot of my time
+      local roslynpath = vim.fn.expand('$HOME/.nuget/LanguageServer/osx-arm64')
+      vim.env.PATH = vim.env.PATH .. ':' .. roslynpath
+      vim.lsp.config('roslyn', {
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        cmd = {
+          'dotnet',
+          roslynpath .. '/Microsoft.CodeAnalysis.LanguageServer.dll',
+          '--logLevel',
+          'Information',
+          '--extensionLogDirectory',
+          '/tmp/roslyn_ls/logs',
+          '--stdio',
+        },
+        settings = {
+          ["csharp|background_analysis"] = {
+            background_analysis = {
+              dotnet_analyzer_diagnostics_scope = "openFiles",
+              dotnet_compiler_diagnostics_scope = "fullSolution",
+            },
+          },
+          ["csharp|inlay_hints"] = {
+            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            csharp_enable_inlay_hints_for_implicit_variable_types = true,
+            csharp_enable_inlay_hints_for_lambda_parameter_types = true,
+            csharp_enable_inlay_hints_for_types = true,
+            dotnet_enable_inlay_hints_for_indexer_parameters = true,
+            dotnet_enable_inlay_hints_for_literal_parameters = true,
+            dotnet_enable_inlay_hints_for_object_creation_parameters = true,
+            dotnet_enable_inlay_hints_for_other_parameters = true,
+            dotnet_enable_inlay_hints_for_parameters = true,
+            dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = true,
+            dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = true,
+            dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
+          },
+          ["csharp|code_lens"] = {
+            dotnet_enable_references_code_lens = true,
+          },
+          ["csharp|completion"] = {
+            dotnet_show_completion_items_from_unimported_namespaces = true,
+            dotnet_show_name_completion_suggestions = true,
+          },
+        }
+      })
+
+      -- markdown
+      lspconfig.marksman.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- bash
+      lspconfig.bashls.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- yaml
+      lspconfig.yamlls.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- swift
       lspconfig.sourcekit.setup {
         capabilities = {
           workspace = {
@@ -36,9 +170,9 @@ return {
       }
     end,
   },
+
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    lazy = true,
     opts = {
       auto_update = false,
       run_on_start = true,
@@ -53,7 +187,7 @@ return {
         'zls', -- zig
         'cmake',
         -- 'csharp_ls',
-        'omnisharp',
+        -- 'omnisharp', -- (using roslyn instead, not through mason)
         -- 'tsserver',
         'jdtls', -- java
         'bashls',
@@ -91,7 +225,6 @@ return {
         'kube-linter',
 
         -- formatters
-        'black',     -- Python lsp
         'prettierd', -- javascript, html, css, json, etc.
         'clang-format',
         'gofumpt',
@@ -104,87 +237,39 @@ return {
   -- a package manager for lsp servers, dap servers, linters, and formatters
   {
     'williamboman/mason.nvim',
-    lazy = true,
     config = function()
-      require("mason").setup()
+      require('mason').setup()
+      local data_path = vim.fn.stdpath('data')
+      vim.env.PATH = vim.env.PATH .. ':' .. data_path .. '/mason/bin'
     end,
   },
+  -- for some reason the mason-lspconfig handlers were breaking things,
+  -- so I'll just be manually configuring settings in native lspconfig
   {
     'williamboman/mason-lspconfig.nvim',
-    lazy = true,
+    after = {
+      'mason.nvim',
+      'mason-tool-installer.nvim',
+    },
+  },
+
+  -- special little roslyn
+  -- see instructions for setting up roslyn, including downloading
+  -- Microsoft.CodeAnalysis.LanguageServer.neutral nuget package
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#roslyn_ls
+  {
+    'seblyng/roslyn.nvim',
+    ft = 'cs,fs',
+    ---@modlue 'roslyn.config'
+    ---@type RoslynNvimConfig
     opts = {
-      handlers = {
-        function(server)
-          require('lspconfig')[server].setup({
-            capabilities = require('cmp_nvim_lsp').default_capabilities(),
-          })
-        end,
-        ['gopls'] = function()
-          local nvim_lsp = require('lspconfig')
-          nvim_lsp.gopls.setup({
-            settings = {
-              gopls = {
-                analyses = {
-                  unusedparams = true,
-                },
-                staticcheck = true,
-                gofumpt = true
-              }
-            },
-            root_dir = nvim_lsp.util.root_pattern("go.mod", ".git"),
-            single_file_support = false,
-          })
-        end,
-        ['clangd'] = function()
-          local nvim_lsp = require('lspconfig')
-          local capabilities = require('cmp_nvim_lsp').default_capabilities()
-          nvim_lsp.clangd.setup({
-            capabilities = capabilities,
-            cmd = {
-              'clangd',
-              '-j=8',
-              '--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
-              '--clang-tidy',
-              '--clang-tidy-checks=*',
-              '--all-scopes-completion',
-              '--cross-file-rename',
-              '--completion-style=detailed',
-              '--header-insertion-decorators',
-              '--header-insertion=iwyu',
-              '--pch-storage=memory',
-            },
-          })
-        end,
-        ['omnisharp'] = function()
-          local nvim_lsp = require('lspconfig')
-          local capabilities = require('cmp_nvim_lsp').default_capabilities()
-          local omnisharp_bin = vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll"
-          nvim_lsp.omnisharp.setup({
-            capabilities = capabilities,
-            -- cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-            cmd = { "dotnet", omnisharp_bin },
-            enable_import_completion = true,
-            organize_imports_on_format = true,
-            enable_roslyn_analyzers = true,
-            root_dir = function(fname)
-              local solution = nvim_lsp.util.root_pattern("*.sln")(fname)
-              local project = nvim_lsp.util.root_pattern("*.csproj")(fname)
-              return solution or project
-            end,
-          })
-        end,
-        ['lua_ls'] = function()
-          require('lspconfig').lua_ls.setup({
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim" },
-                }
-              }
-            }
-          })
-        end,
-      },
+      choose_target = function(target)
+        return vim.iter(target):find(function(item)
+          if string.match(item, '.sln$') then
+            return item
+          end
+        end)
+      end
     },
   },
 
@@ -197,7 +282,6 @@ return {
       'hrsh7th/cmp-path',
       'L3MON4D3/LuaSnip',
     },
-    lazy = true,
     config = function()
       local cmp = require('cmp')
       local compare = cmp.config.compare
@@ -207,7 +291,7 @@ return {
       local has_words_before = function()
         unpack = unpack or table.unpack
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
       end
 
       cmp.setup({
@@ -221,7 +305,7 @@ return {
           ['<c-space>'] = cmp.mapping.complete(),
           ['<c-u>'] = cmp.mapping.scroll_docs(-4),
           ['<c-d>'] = cmp.mapping.scroll_docs(4),
-          ["<c-n>"] = cmp.mapping(function(fallback)
+          ['<c-n>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
               -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
@@ -233,9 +317,9 @@ return {
             else
               fallback()
             end
-          end, { "i", "s" }),
+          end, { 'i', 's' }),
 
-          ["<c-p>"] = cmp.mapping(function(fallback)
+          ['<c-p>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -243,7 +327,7 @@ return {
             else
               fallback()
             end
-          end, { "i", "s" }),
+          end, { 'i', 's' }),
         }),
         snippet = {
           expand = function(args)
@@ -278,27 +362,30 @@ return {
   -- snippets
   {
     'L3MON4D3/LuaSnip',
-    lazy = true,
     dependencies = {
-      "rafamadriz/friendly-snippets",
-      "saadparwaiz1/cmp_luasnip"
+      'rafamadriz/friendly-snippets',
+      'saadparwaiz1/cmp_luasnip'
     },
   },
 
   -- symbol outline
   {
-    "hedyhli/outline.nvim",
+    'hedyhli/outline.nvim',
     config = function()
-      require("outline").setup()
+      require('outline').setup()
     end,
   },
 
   -- extra highlighting
   {
-    "tikhomirov/vim-glsl"
+    'tikhomirov/vim-glsl',
+    lazy = true,
+    ft = 'glsl',
   },
 
   {
-    "neovimhaskell/haskell-vim"
+    'neovimhaskell/haskell-vim',
+    lazy = true,
+    ft = 'hs',
   },
 }
