@@ -10,14 +10,14 @@ vim.keymap.set('n', 'gV', '`[v`]')
 vim.keymap.set('n', '<space><space>', 'za')
 
 -- toggle tree
--- set as lazy-load key mapping
--- vim.keymap.set('n', 'gw', '<cmd>NvimTreeToggle<cr>')
+-- vim.keymap.set('n', 'gw', '<cmd>NvimTreeToggle<cr>') -- set as lazy-load key mapping
 
 -- multi-window movement
-vim.keymap.set('n', '<c-j>', '<c-w>j')
-vim.keymap.set('n', '<c-k>', '<c-w>k')
-vim.keymap.set('n', '<c-h>', '<c-w>h')
-vim.keymap.set('n', '<c-l>', '<c-w>l')
+-- set via 'nvim-tmux-navigation' plugin
+-- vim.keymap.set('n', '<c-j>', '<c-w>j')
+-- vim.keymap.set('n', '<c-k>', '<c-w>k')
+-- vim.keymap.set('n', '<c-h>', '<c-w>h')
+-- vim.keymap.set('n', '<c-l>', '<c-w>l')
 
 -- jump to last buffer
 vim.keymap.set('n', '<c-p>', '')
