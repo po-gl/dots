@@ -323,4 +323,13 @@
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
+    "chat.instructionsFilesLocations": {
+        ".github/instructions": true,
+        "/var/folders/6z/6fphgdq52658yztyv4642mt00000gn/T/postman-collections-post-response.instructions.md": true,
+        "/var/folders/6z/6fphgdq52658yztyv4642mt00000gn/T/postman-collections-pre-request.instructions.md": true,
+        "/var/folders/6z/6fphgdq52658yztyv4642mt00000gn/T/postman-folder-post-response.instructions.md": true,
+        "/var/folders/6z/6fphgdq52658yztyv4642mt00000gn/T/postman-folder-pre-request.instructions.md": true,
+        "/var/folders/6z/6fphgdq52658yztyv4642mt00000gn/T/postman-http-request-post-response.instructions.md": true,
+        "/var/folders/6z/6fphgdq52658yztyv4642mt00000gn/T/postman-http-request-pre-request.instructions.md": true
+    },
 }

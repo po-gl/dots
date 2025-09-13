@@ -28,10 +28,20 @@ return {
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     lazy = false,
     config = function()
+      local theme = require('lualine.themes.auto') -- gruvbox-baby
+      theme.inactive.a.fg = '#bbbbbb'
+      theme.inactive.b.fg = '#bbbbbb'
+      theme.inactive.c.fg = '#bbbbbb'
+      theme.inactive.a.bg = '#4b5e5e'
+      theme.inactive.b.bg = '#4b5e5e'
+      theme.inactive.c.bg = '#4b5e5e'
+      theme.inactive.a.gui = 'bold'
+      theme.inactive.b.gui = 'bold'
+      theme.inactive.c.gui = 'bold'
       require('lualine').setup({
         options = {
           icons_enabled = true,
-          theme = 'auto',
+          theme = theme, -- 'auto'
           -- component_separators = { left = '', right = ''},
           -- section_separators = { left = '', right = ''},
           component_separators = { left = ' ', right = ' '},

@@ -21,6 +21,8 @@ end
 create_tas_autocmd('python', 4, 4, 4)
 create_tas_autocmd('css', 4, 4, 4)
 create_tas_autocmd('go', 4, 4, 4)
+create_tas_autocmd('css', 4, 4, 4)
+create_tas_autocmd('cs', 4, 4, 4)
 
 create_tas_autocmd('lua', 2, 2, 2)
 create_tas_autocmd('bash', 2, 2, 2)
@@ -35,3 +37,4 @@ create_tas_autocmd('json', 2, 2, 2)
 create_tas_autocmd('sshconfig', 2, 2, 2)
 create_tas_autocmd('markdown', 2, 2, 2)
 create_tas_autocmd('toml', 2, 2, 2)
+create_tas_autocmd('xml', 2, 2, 2)

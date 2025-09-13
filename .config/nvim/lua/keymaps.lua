@@ -19,6 +19,14 @@ vim.keymap.set('n', '<space><space>', 'za')
 -- vim.keymap.set('n', '<c-h>', '<c-w>h')
 -- vim.keymap.set('n', '<c-l>', '<c-w>l')
 
+-- buffers
+-- eh, I kinda like [b ]b more
+vim.keymap.set('n', 'gj', '<cmd>bn<cr>')
+vim.keymap.set('n', 'gk', '<cmd>bp<cr>')
+
+vim.keymap.set('n', 'gl', '<cmd>ls<cr>')
+-- :b 3 (jump to buffer 3)
+
 -- jump to last buffer
 vim.keymap.set('n', '<c-p>', '')
 

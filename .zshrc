@@ -1,5 +1,6 @@
+# Profile zsh startup by adding "zmodload zsh/zprof" to the beginning of
+# the file and "zprof" to the end.
 # Path Variables {{{
-#
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
@@ -10,11 +11,13 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/porter
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/X.X.0/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
+# ruby is slow to initialize, most virtual environment are.
+# I should use the evalcache zsh plugin to cache the eval results
+# if I revisit this
+# eval "$(rbenv init -)"
+# if which ruby >/dev/null && which gem >/dev/null; then
+#     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+# fi
 
 export PATH="$PATH:/opt/homebrew/Caskroom/flutter/2.0.1/flutter/bin"
 
@@ -44,9 +47,12 @@ export PYTHON_INCLUDE_DIR="/usr/local/Frameworks/Python.framework/Versions/3.7/H
 
 export PICO_SDK_PATH="/usr/local/pi/pico-sdk"
 
+# very slow to load in, so lazy load
+# maybe use evalcache?
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias nvm="unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm $@"
 
 export BAT_THEME=gruvbox-dark
 
@@ -136,6 +142,7 @@ function laptop() {
 
 # }}}
 # Zsh Plugins {{{
+
 plugins=(
   git
   vi-mode
@@ -186,7 +193,7 @@ vi-yank-arg() {
 zle -N vi-yank-arg
 bindkey -M vicmd _ vi-yank-arg
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 eval "$(zoxide init zsh)"
 

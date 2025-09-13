@@ -2,7 +2,6 @@ Adobe After Effects 2023
 Adobe Creative Cloud
 Adobe Media Encoder 2023
 Affinity Designer.app
-AI Enlarger.app
 Android File Transfer.app
 Android Studio.app
 ArmGNUToolchain
@@ -45,7 +44,6 @@ logioptionsplus.app
 love.app
 LTspice.app
 Magnet.app
-Microsoft OneNote.app
 MultiMC.app
 Noir.app
 Nova.app
@@ -54,7 +52,6 @@ Numi.app
 OBS.app
 OpenEmu.app
 Pages.app
-Parallels Desktop.app
 PICO-8.app
 QuPath-0.6.0-arm64.app
 R.app
@@ -75,12 +72,14 @@ Transmission.app
 Unity
 Unity Hub.app
 Utilities
+UTM.app
 Vimlike.app
 Visual Studio Code.app
 WhichSpace.app
 Windows App.app
 Wipr.app
 Wireshark.app
+Xcode-beta.app
 Xcode.app
 Zed.app
 zoom.us.app

@@ -15,7 +15,11 @@ vim.o.colorcolumn = "80"
 
 vim.o.signcolumn = 'yes'
 
-vim.o.updatetime = 100
+vim.o.updatetime = 750
+
+-- so my line endings don't change automatically...
+-- also use :set ff=unix or ff=dos
+vim.g.editorconfig = false
 
 -- highlight matching parentheses
 vim.o.showmatch = true

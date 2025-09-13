@@ -3,6 +3,32 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      defaults = {
+        dynamic_preview_title = true,
+        path_display = {
+          shorten = {
+            len = 3,
+            exclude = {1, -1},
+          },
+        },
+        layout_strategy = "flex",
+        layout_config = {
+          horizontal = {
+            width = 0.95,
+            height = 0.95,
+            preview_width = 0.55,
+            preview_cutoff = 120,
+          },
+          vertical = {
+            width = 0.98,
+            height = 0.98,
+            preview_height = 0.40,
+            preview_cutoff = 10,
+          }
+        },
+      },
+    },
   },
 
   -- assistant
