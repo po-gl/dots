@@ -3,7 +3,6 @@ Adobe Creative Cloud
 Adobe Media Encoder 2023
 Affinity Designer.app
 Android File Transfer.app
-Android Studio.app
 ArmGNUToolchain
 Aseprite.app
 balenaEtcher.app
@@ -80,6 +79,5 @@ Windows App.app
 Wipr.app
 Wireshark.app
 Xcode-beta.app
-Xcode.app
 Zed.app
 zoom.us.app

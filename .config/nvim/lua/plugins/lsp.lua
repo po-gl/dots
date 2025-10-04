@@ -51,7 +51,7 @@ return {
       })
 
       -- javascript
-      lspconfig.eslint.setup({
+      lspconfig.ts_ls.setup({
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
       })
 
@@ -207,7 +207,8 @@ return {
         'bashls',
         'html',
         'emmet_ls',
-        'eslint-lsp', -- javascript, typescript
+        -- 'eslint-lsp', -- javascript, typescript
+        'typescript-language-server',
         'cssls',
         'jsonls',
         'yamlls',

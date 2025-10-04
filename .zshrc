@@ -83,7 +83,7 @@ alias bat='bat'
 alias pgcopy="tr -d '\n' | pbcopy"
 
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
-alias brew="/opt/homebrew/bin/brew"
+alias brew="arch -arm64 /opt/homebrew/bin/brew"
 
 alias brew-update="brew update && brew upgrade && ibrew update && ibrew upgrade"
 
@@ -210,8 +210,9 @@ export ZSH="/Users/porter/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="pygmalion"
+ZSH_THEME="po-gl"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="pygmalion"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

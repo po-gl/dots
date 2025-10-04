@@ -9,9 +9,9 @@ install: install-brew-bundle copy install-nvim-packer install-tmux-plugin-manage
 
 install-tools: copy-nvim copy-tmux copy-gitconfig install-nvim-packer install-tmux-plugin-manager
 
-copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-nvim copy-wm copy-vscode
+copy: copy-bash copy-zsh copy-chunkwmrc copy-docker copy-gitconfig copy-tmux copy-nvim copy-wm copy-vscode copy-omz
 
-gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-nvim get-wm get-vscode
+gather: get-brew-bundle get-mac-apps get-bash get-zsh get-chunkwmrc get-docker get-gitconfig get-tmux get-nvim get-wm get-vscode get-omz
 
 
 # Installation rules
@@ -78,6 +78,9 @@ copy-vscode:
 copy-latexmk:
 	cp .latexmkrc ~/
 
+copy-omz:
+	cp -R .oh-my-zsh/custom/themes ~/.oh-my-zsh/custom/
+
 
 # Gather rules
 get-brew-bundle:
@@ -134,3 +137,8 @@ get-vscode:
 
 get-latexmk:
 	cp ~/.latexmkrc .
+
+get-omz:
+	mkdir -p .oh-my-zsh/custom/themes/
+	cp -R ~/.oh-my-zsh/custom/themes/ .oh-my-zsh/custom/themes/
+

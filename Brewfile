@@ -48,7 +48,7 @@ brew "glslviewer"
 brew "gnu-sed"
 brew "gnupg"
 brew "go"
-brew "pkgconf"
+brew "pkgconf", link: false
 brew "gobject-introspection"
 brew "grpc"
 brew "hexyl"
